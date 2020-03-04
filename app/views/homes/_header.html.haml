@@ -3,7 +3,7 @@
     .header__box__main
       .header__box__main__icon
         = link_to "/",class: "header__box__main__icon--image" do
-          %img{:src => "assets/logo.png"}/
+          %img.header__box__main__icon--image--logo{:src => "assets/logo.png" }/
       .header__box__main__searchbox
         %form{"accept-charset" => "UTF-8", :action => "#", :method => "get"}
           %input{:name => "utf8", :type => "hidden", :value => "✓"}/
