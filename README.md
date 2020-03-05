@@ -9,14 +9,9 @@
 ### Association
 - has_many: items
 - has_many: messages
-- has_many: identifications
 - has_many: plofiles
-- has_many: deliverys
-- has_meny: user_images
-- has_meny: credit_cards
-- belongs_to: item
 
-## identificationsテーブル
+## profilesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
@@ -27,8 +22,10 @@
 |yera_birth_at|date|null: false|
 |month_birth_at|date|null: false|
 |day_birth_at|date|null: false|
+|comment|text|
+|user_image|string|
 ### Association
-- belongs_to: users
+- belongs_to: user
 
 ## deliverysテーブル
 |Column|Type|Options|
@@ -45,34 +42,7 @@
 |building|string|
 |phone_number|integer|null: false|
 ### Association
-- has_many: prefectures
-- belongs_to: users
-
-## plofilesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true||
-|comment|text|
-### Association
-- has_meny: user_images
-- belongs_to: users
-
-## user_imagesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true||
-|user_image|string|
-### Association
-- belongs_to: plofiles
-
-
-## prefecturesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|prefectures_id|integer|null: false, foreign_key: true||
-|prefectures_name|string|null: false|
-### Association
-- belongs_to: deliverys
+- belongs_to: user
 
 ## credit_cardsテーブル
 |Column|Type|Options|
@@ -83,7 +53,7 @@
 |expiration_date_year_at|date|null: false|
 |security_cpde|date|null: false|
 ### Association
-- belongs_to: users
+- belongs_to: user
 
 ## itemsテーブル
 |Column|Type|Options|
@@ -99,10 +69,10 @@
 |shipping_days|integer|null: false|
 ### Association
 - has_many: item_images
-- has_many: brands
-- has_many: categorys
 - has_many: messages
-- belongs_to: users
+- belongs_to: category
+- belongs_to: user
+- belongs_to: brand
 
 ## item_imagesテーブル
 |Column|Type|Options|
@@ -115,19 +85,17 @@
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|brand_id|integer|null: false, foreign_key: true||
 |brand_name|string|null: false|
 ### Association
-- belongs_to: item
+- has_many: items
 
 ## categorysテーブル
 |Column|Type|Options|
 |------|----|-------|
-|category_id|integer|null: false, foreign_key: true||
 |category_name|string|null: false|
 |ancestry|string|
 ### Association
-- belongs_to: item
+- has_many: items
 - has_ancestry
 
 ## messagesテーブル
@@ -137,5 +105,5 @@
 |item_id|integer|null: false, foreign_key: true|
 |massage|text|null: false|
 ### Association
-- belongs_to: users
-- belongs_to: items
+- belongs_to: user
+- belongs_to: item
