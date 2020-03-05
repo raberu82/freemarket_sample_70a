@@ -1,6 +1,8 @@
 
 * {
   box-sizing: border-box;
+//   background-image: none;
+  background-attachment: scroll;
 }
 
 .wrapper {
@@ -8,32 +10,212 @@
   width: 100vw;
 }
 
+// -<header>-
 .header {
   width: 100%;
   height: 100px;
-  padding-left: 60px;
-  padding-right: 60px;
+  padding-left: 200px;
+  padding-right: 200px;
+  display: block;
+  // position: fixed;           
+  // top: 0px;                   
+  // left: 0px;            
   &__box {
-    padding-top: 15px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px 0 0;
     &__main {
       height: 50px;
+      display: flex;
+      align-items: center;
       &__icon {
         width: 150px;
-        padding-bottom: 10px;
-        margin-right: 30px;
+        padding-bottom: 5px;
+        margin-right: 25px;
         &--image {
           width: 100%;
           height: 100%;
           &--logo {
-            height: 50px;
-            width: 120px;
+            height: 40px;
+            width: 140px;
+          }
+        }
+      }
+      &__searchbox {
+        width: calc(100% - 170px);
+        height: 50px;
+        &__form {
+          height: 40px;
+          margin-bottom: 5px;
+          display: flex;
+          &--input {
+            width: calc(100% - 35px);
+            padding-left: 5px;
+          }
+          &__submit {
+            height: 100%;
+            width: 40px;
+            padding: 7px;
+            background-color: #3CCACE;
+            &--icon {
+              height: 25px;
+              width: 25px;
+            }
           }
         }
       }
     }
+    @mixin hoge($width: 100px,$text-decoration: none,$list-style: none,$color: black,) {
+      width: $width;
+      text-decoration: $text-decoration;
+      list-style:$list-style;
+      color: $color;
+    }
     &__nav {
+      width: 100%;
       height: 35px;
+      line-height: 35px;
       margin-bottom: 10px;
+      display: flex;
+      font-size: 12px;
+      align-items: center;
+      &__listleft {
+        display: flex;
+        &__categories {
+          @include hoge ();
+        }
+        &__brand {
+          @include hoge ();
+          padding-left: 30px;
+        }
+      }
+      &__listright {
+        margin-left: 750px;
+        display: flex;
+        &__login {
+          @include hoge ();
+        }
+        &__new {
+          @include hoge ();
+          padding-left: 30px;
+        }
+      }
+    }
+  }
+}
+
+// <main>
+.main {
+  // margin-top: 100px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(248,248,248);
+  background-attachment: scroll;
+  background-clip: border-box;
+  // <section１つ目>
+  &__top {
+    width: 100%;
+    height: 560px;
+    background-image: url("bg-mainVisual-pict_pc.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    position: relative;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    &__content {   
+      width: 100%;
+      margin: 0 auto;
+      padding: 35px 0 0 0;
+      &__title {
+        height: 200px;
+        font-size: 60px;
+        color:#fff;
+        line-height: 200px;
+      }
+      &__text {
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        font-size: 18px;
+        color: #fff;
+        line-height: 1.77778;
+        margin: 16px 0 0 0;
+      }
+    }
+  }
+
+    // <section２つ目>
+  &__reason {
+    width: 100%;
+    height: 630px;
+    background-color: rgb(248,248,248);
+    padding: 60px 20px;
+    &__title {
+      height: 50px;
+      text-align: center;
+      font-size: 26px;
+      line-height: 50px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      position: relative;
+      &:after {
+        content: "";
+        width: 70px;
+        height: 4px;
+        background-color: #3CCACE;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    &__lists {
+      text-align: center;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      &--list {
+        width: 30%;
+        margin: 16px 5% 0 0;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &__image {
+          position: relative;
+          margin-bottom: 10px;
+          height: 260px;
+          .number {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 4%;
+            font-size: 30px;
+            text-align: center;
+            margin: 0 5px 0 0;
+            padding: 10px 20px;
+            background-color: #3CCACE;
+            color: #fff;
+          }
+          .number__image {
+            height: 250px;
+            width: 250px;
+          }
+        }
+        &__text {
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 50px;
+        height: 50px;
+          .text{
+            color: #3CCACE;
+          }
+        }
+      }
     }
   }
 }
