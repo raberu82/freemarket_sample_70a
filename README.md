@@ -9,7 +9,7 @@
 ### Association
 - has_many: items
 - has_many: messages
-- has_many: plofiles
+- has_one: plofiles
 
 ## profilesテーブル
 |Column|Type|Options|
@@ -19,9 +19,9 @@
 |last_name|string|null: false|
 |first_name_kana|string|null: false|
 |last_name_kana|string|null: false|
-|yera_birth_at|date|null: false|
-|month_birth_at|date|null: false|
-|day_birth_at|date|null: false|
+|birth_yera|date|null: false|
+|birth_month|date|null: false|
+|birth_day|date|null: false|
 |comment|text|
 |user_image|string|
 ### Association
@@ -58,7 +58,7 @@
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item_name|string|null: false,index: true|
+|name|string|null: false,index: true|
 |price|integer|null: false,index: true|
 |users_id|integer|null: false, foreign_key: true|
 |buyer_id|integer|null: false|
@@ -85,14 +85,14 @@
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|brand_name|string|null: false|
+|name|string|null: false|
 ### Association
 - has_many: items
 
 ## categorysテーブル
 |Column|Type|Options|
 |------|----|-------|
-|category_name|string|null: false|
+|name|string|null: false|
 |ancestry|string|
 ### Association
 - has_many: items
