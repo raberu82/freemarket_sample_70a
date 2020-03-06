@@ -1,7 +1,6 @@
 
 * {
   box-sizing: border-box;
-//   background-image: none;
   background-attachment: scroll;
 }
 
@@ -16,10 +15,7 @@
   height: 100px;
   padding-left: 200px;
   padding-right: 200px;
-  display: block;
-  // position: fixed;           
-  // top: 0px;                   
-  // left: 0px;            
+  display: block;     
   &__box {
     width: 100%;
     margin: 0 auto;
@@ -479,6 +475,7 @@
   }
   
 }
+// <aside>
 .appbanner {
   background-image: url("bg-appBanner-pict.jpg");
   background-size: cover;
@@ -526,6 +523,7 @@
     }
   }
 }
+// <footer>
 .footer {
   padding-top: 60px;
   color: #fff;
@@ -574,6 +572,7 @@
   }
   }
 }
+// <出品アイコン>
 .purchaseBtn {
   width: 120px;
   background: #3CCACE;
