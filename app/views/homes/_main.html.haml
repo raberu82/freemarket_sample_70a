@@ -1,5 +1,5 @@
 .main
-    
+       
   %section.main__top
     .main__top__content
       %h2.main__top__content__title 人生を変えるフリマアプリ
@@ -7,6 +7,11 @@
         FURIMAはだれでもかんたんに出品・購入できる 
         %br/
         フリマアプリです
+      .main__top__content__btn
+        %a.main__top__content__btn--apple{:href => "#"}
+          %img.apple{:src => "assets/app_logo_apple.png"}/
+        %a.main__top__content__btn--google{:href => "#"}
+          %img.google{:src => "assets/google-play-badge.png"}/
 
     -# <section2つめ>
   %section.main__reason
@@ -55,6 +60,12 @@
         出品・購入回数も業界最多です！
         %br/
         ほしかったあの商品に出会えるかもしれません。
+      .main__middle__content__btn
+        %a.main__middle__content__btn--apple{:href => "#"}
+          %img.apple{:src => "assets/app_logo_apple.png"}/
+        %a.main__middle__content__btn--google{:href => "#"}
+          %img.google{:src => "assets/google-play-badge.png"}/
+
 
     -# <section4つめ>
   %section.main__key
@@ -168,7 +179,7 @@
             .main__pickup__box__lists__list__box--text
               %h3.name 製品名
               .details
-                %ul.pickup__image
+                %ul.details__price
                   %li ~円
                   %li
                     %i.fa.fa-star.likeIcon
@@ -181,14 +192,10 @@
             .main__pickup__box__lists__list__box--text
               %h3.name 製品名
               .details
-                %ul.pickup__image
+                %ul.details__price
                   %li ~円
                   %li
                     %i.fa.fa-star.likeIcon
                     0
                 %p.details__text (税込)
-  -# %aside.appbanner
-  -# .appbanner__content
-  -#   %h2.appbanner__content__title だれでもかんたん、人生を変えるフリマアプリ
-  -#   %p.appbanner__content__text 今すぐ無料ダウンロード！
 
