@@ -288,7 +288,7 @@
   &__middle {
     height: 400px;
     display: flex;
-    background-image: url("bg-topMiddleDl-pict.jpg");
+    background-image: image-url("bg-topMiddleDl-pict.jpg");
     background-size: cover;
     &__content {
       padding-top: 100px;
@@ -477,7 +477,7 @@
 }
 // <aside>
 .appbanner {
-  background-image: url("bg-appBanner-pict.jpg");
+  background-image: image-url("bg-appBanner-pict.jpg");
   background-size: cover;
   height: 400px;
   width: 100%;
