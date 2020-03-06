@@ -3,14 +3,14 @@
     .header__box__main
       .header__box__main__icon
         = link_to "/",class: "header__box__main__icon--image" do
-          %img.header__box__main__icon--image--logo{:src => "assets/logo.png" }/
+          =image_tag "logo.png",class:"header__box__main__icon--image--logo"
       .header__box__main__searchbox
         %form.header__box__main__searchbox__form{"accept-charset" => "UTF-8", :action => "#", :method => "get"}
-          %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-          %input#searchInput.header__box__main__searchbox__form--input{:name => "key", :placeholder => "キーワードから探す"}/
-          %button.header__box__main__searchbox__form__submit{:type => "submit"}
-            %img.header__box__main__searchbox__form__submit--icon{:src => "assets/icon-search 1.png"}/
-            %input{:name => "authenticity_token", :type => "hidden", :value => "✓"}/
+          %input{name:"utf8", type:  "hidden", value:  "✓"}/
+          %input#searchInput.header__box__main__searchbox__form--input{name: "key", placeholder: "キーワードから探す"}/
+          %button.header__box__main__searchbox__form__submit{type: "submit"}
+            =image_tag "icon-search 1.png",class:"header__box__main__searchbox__form__submit--icon"
+            %input{name: "authenticity_token", type: "hidden", value: "✓"}/
     .header__box__nav
       %ul.header__box__nav__listleft
         %li=link_to "カテゴリー" , "#" , class:"header__box__nav__listleft__categories" 

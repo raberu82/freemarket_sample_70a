@@ -3,9 +3,9 @@
     %h2.appbanner__content__title だれでもかんたん、人生を変えるフリマアプリ
     %p.appbanner__content__text 今すぐ無料ダウンロード！
     .appbanner__content__btn
-      %a.appbanner__content__btn--apple{:href => "#"}
-        %img.apple{:src => "assets/app_logo_apple.png"}/
-      %a.appbanner__content__btn--google{:href => "#"}
-        %img.google{:src => "assets/google-play-badge.png"}/
+      =link_to "#",class:"appbanner__content__btn--apple" do
+        =image_tag "app_logo_apple.png",class:"apple"
+      =link_to "#",class:"appbanner__content__btn--google" do
+        =image_tag "google-play-badge.png",class:"google"
 
  
