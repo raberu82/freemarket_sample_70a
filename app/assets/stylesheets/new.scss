@@ -1,0 +1,91 @@
+.exhibit-wrapper{
+  position: relative;
+  min-height: 100%;
+  color: rgb(51, 51, 51);
+  background-color:  rgb(255, 255, 255);
+  font-size: 14px;
+  .exhibit-header{
+    height: 128px;
+    background-color:  rgb(245, 245, 245);
+    &__rogo{
+    }
+  }
+  .exhibit-container{
+    background-color: rgb(255, 255, 255);
+    height: 800px;
+  }
+    .exhibit-img{
+      &__ttl{
+      }
+      &__info{
+      }
+      &__box{
+      }
+    }
+    .exhibit-item{
+      &__name{
+        &__box{
+        }
+      }
+      &__explanation{
+        &__box{
+        }
+      }
+    }
+    .exhibit-detail{
+      &__ttl{
+      }
+      &__category{
+        &__box{
+        }
+      }
+      &__brand{
+        &__box{
+        }
+      }
+      &__status{
+        &__box{
+        }
+      }
+    }
+    .exhibit-delivery{
+      &__ttl{
+      }
+      &__payment{
+        &__box{
+        }
+      }
+      &__prefecture{
+        &__box{
+        }
+      }
+      &__days{
+        &__box{
+        }
+      }
+    }
+    .exhibit-price{
+      &__info{
+      }
+      &__ttl{
+        &__box{
+        }
+      }
+      &__commission{
+      }
+      &__profit{
+      }
+      .exhibit-submit-btn{
+      }
+      .exhibit-back-btn{
+      }
+      .exhibit-txt{
+      }
+    }
+  .exhibit-footer{
+    .exhibit-footer__list{
+    }
+    .exhibit-footer__icon{
+    }
+  }
+}
