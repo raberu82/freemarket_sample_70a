@@ -1,0 +1,9 @@
+.wrapper
+  = render "shared/header"
+  = render "main"
+  = render "aside"
+  = render "shared/footer"
+  =link_to "#" do
+    .purchaseBtn
+      %span.purchaseBtn__text 出品する
+      =image_tag "icon_camera.png",class: "purchaseBtn__icon"
