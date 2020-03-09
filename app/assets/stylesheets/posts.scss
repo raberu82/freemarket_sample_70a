@@ -61,7 +61,7 @@
         }
       }
     }
-    @mixin hoge($width: 100px,$text-decoration: none,$list-style: none,$color: black,) {
+    @mixin hoge($width: 100px,$text-decoration: none,$list-style: none,$color: black) {
       width: $width;
       text-decoration: $text-decoration;
       list-style:$list-style;

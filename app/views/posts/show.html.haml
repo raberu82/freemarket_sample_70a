@@ -1,8 +1,103 @@
 = render "header"
-
+-# <ヘッダーの下のナビゲーション>
+%nav.header__nav
+  %ul.header__nav__lists
+    %li
+      =link_to "FURIMA","/",class:"header__nav__lists__list"
+    %li.header__nav__lists__list
+      %i.fa.fa-angle-right
+    %li
+      =link_to "ベビー・キッズ","/",class:"header__nav__lists__list"
+    %li.header__nav__lists__list
+      %i.fa.fa-angle-right
+    %li
+      =link_to "ベビー服(男女兼用)  ~95cm","/",class:"header__nav__lists__list"
+    %li.header__nav__lists__list
+      %i.fa.fa-angle-right
+    %li
+      =link_to "アウター","/" ,class:"header__nav__lists__list"
+    %li.header__nav__lists__list
+      %i.fa.fa-angle-right
+    %li
+      %p.header__nav__lists__list product3
+-#  <商品詳細ページのmain>     
 .prodactdetails
   .prodactdetails__main
-  
+    .prodactdetails__main__contents
+      .prodactdetails__main__contents__topcontent
+        .prodactdetails__main__contents__topcontent__itembox
+          %h2.itembox--name product3
+          .itembox--body
+            %ul.itembox--body__img
+              %li.itembox--body__img__box
+                =image_tag "a007.png",class:"itembox--body__img__box__main"
+                %ul.itembox--body__img__box__lists
+                  %li.itembox--body__img__box__lists__list
+                    =image_tag "a007.png",class:"itembox--body__img__box__lists__list"
+                  %li.itembox--body__img__box__lists__list
+                    =image_tag "a003.png",class:"itembox--body__img__box__lists__list"
+                  %li.itembox--body__img__box__lists__list
+                    =image_tag "a001.png",class:"itembox--body__img__box__lists__list"
+          .itembox--price
+            %span.itembox--price__head ¥3,000,000,000-
+            .itembox--price__details
+              %span (税込)
+              %span 送料込み
+          .itembox--text
+            親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+          .itembox--table
+            %table.itembox--table__details
+              %tbody.itembox--table__details__mass
+                %tr
+                  %th.line--Seller 出品者
+                  %td.line--SellerName hoge
+                %tr
+                  %th.line--categories カテゴリー
+                  %td.line--categoriesname
+                    =link_to "ベビー・キッズ","#",class: "line--categorieslink"
+                    %br/
+                    =link_to "ベビー服(男女兼用)  ~95cm","#"  
+                    %br/
+                    =link_to "アウター","#"  
+                %tr
+                  %th ブランド
+                  %td
+                %tr
+                  %th 商品のサイズ
+                  %td
+                %tr
+                  %th 商品の状態
+                  %td 未使用に近い
+                %tr
+                  %th 配送料の負担
+                  %td 送料込み（出品者負担）
+                %tr
+                  %th 発送元の地域
+                  %td
+                    %a{:href => "#"} 岩手県
+                %tr
+                  %th 発送日の目安
+                  %td 4-7日で発送
+
+            
+          .itembox--option
+        .prodactdetails__main__contents__topcontent__commentbox
+          %ul.commentContents
+          %form#new_comment.new_comment{"accept-charset" => "UTF-8", :action => "#", :method => "post"}
+            %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+            %input{:name => "authenticity_token", :type => "hidden", :value => "✓"}/
+            %textarea#comment_body{:name => "comment[body]", :required => "required"}
+            %p.noticeMsg
+              相手のことを考え丁寧なコメントを心がけましょう。
+              %br/
+              不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %br/
+            %button.commentBtn{:name => "button", :type => "submit"}
+              %i.fa.fa-comment
+              コメントする
+
+      .prodactdetails__main__contents__links
+      .prodactdetails__main__contents__relateditems
 = render "aside"
 = render "footer"
 = render "purchacebtn"
