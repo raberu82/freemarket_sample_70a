@@ -52,29 +52,29 @@
                   %th.line--Seller 出品者
                   %td.line--SellerName hoge
                 %tr
-                  %th.line--categories カテゴリー
-                  %td.line--categoriesname
-                    =link_to "ベビー・キッズ","#",class: "line--categorieslink"
+                  %th.line--Categories カテゴリー
+                  %td.line--CategoriesName
+                    =link_to "ベビー・キッズ","#",class: "line--CategoriesName__link"
                     %br/
-                    =link_to "ベビー服(男女兼用)  ~95cm","#"  
+                    =link_to "ベビー服(男女兼用)  ~95cm","#",class: "line--CategoriesName__link"
                     %br/
-                    =link_to "アウター","#"  
+                    =link_to "アウター","#",class: "line--CategoriesName__link"
                 %tr
-                  %th ブランド
-                  %td
+                  %th.line--Bland ブランド
+                  %td.line--BlandName
                 %tr
-                  %th 商品のサイズ
-                  %td
+                  %th.line--ProductSize 商品のサイズ
+                  %td.line--ProductSizeNumber
                 %tr
-                  %th 商品の状態
-                  %td 未使用に近い
+                  %th.line--ProductStatus 商品の状態
+                  %td.line--ProductStatusnow 未使用に近い
                 %tr
                   %th 配送料の負担
                   %td 送料込み（出品者負担）
                 %tr
                   %th 発送元の地域
                   %td
-                    %a{:href => "#"} 岩手県
+                    %a{href: "#"} 岩手県
                 %tr
                   %th 発送日の目安
                   %td 4-7日で発送
@@ -83,16 +83,16 @@
           .itembox--option
         .prodactdetails__main__contents__topcontent__commentbox
           %ul.commentContents
-          %form#new_comment.new_comment{"accept-charset" => "UTF-8", :action => "#", :method => "post"}
-            %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-            %input{:name => "authenticity_token", :type => "hidden", :value => "✓"}/
-            %textarea#comment_body{:name => "comment[body]", :required => "required"}
+          %form#new_comment.new_comment{"accept-charset": "UTF-8", action: "#", method: "post"}
+            %input{name: "utf8", type: "hidden", value: "✓"}/
+            %input{name: "authenticity_token", type: "hidden", value: "✓"}/
+            %textarea#comment_body{name: "comment[body]", required: "required"}
             %p.noticeMsg
               相手のことを考え丁寧なコメントを心がけましょう。
               %br/
               不快な言葉遣いなどは利用制限や退会処分となることがあります。
             %br/
-            %button.commentBtn{:name => "button", :type => "submit"}
+            %button.commentBtn{name: "button", type: "submit"}
               %i.fa.fa-comment
               コメントする
 

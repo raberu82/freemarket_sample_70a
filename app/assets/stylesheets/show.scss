@@ -32,7 +32,7 @@
 }
 
 .prodactdetails {
-  height: 1850px;
+  height: calc(100% - 800px);
   width: 100%;
   background-color:  rgb(248,248,248);
   &__main {
@@ -137,12 +137,33 @@
                 height: 47px;
                 @include tableline--details();
               }
-              .line--categories {
+              .line--Categories {
                 @include tableline--head();
               }
-              .line--categoriesname {
+              .line--CategoriesName {
                 @include tableline--details();
-
+                &__link {
+                  text-decoration: none;
+                  color: #3CCACE;
+                }
+              }
+              .line--Bland {
+                @include tableline--head();
+              }
+              .line--BlandName{
+                @include tableline--details();
+              }
+              .line--ProductSize {
+                @include tableline--head();
+              }
+              .line--ProductSizeNumber {
+                @include tableline--details();
+              }
+              .line--ProductStatus {
+                @include tableline--head();
+              }
+              .line--ProductStatusnow {
+                @include tableline--details();
               }
             }
           }
