@@ -19,5 +19,5 @@
           %ul.header__box__nav__listleft__lookfor__tree
             %li.header__box__nav__listleft__lookfor__tree--item
       %ul.header__box__nav__listright
-        %li=link_to "ログイン",'#',class:'header__box__nav__listright__login' 
-        %li=link_to '新規会員登録','#',class:'header__box__nav__listright__new' 
+        %li=link_to "ログイン",new_user_session_path,class:'header__box__nav__listright__login' 
+        %li=link_to '新規会員登録',new_user_registration_path,class:'header__box__nav__listright__new' 
