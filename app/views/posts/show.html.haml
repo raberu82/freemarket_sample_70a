@@ -69,35 +69,58 @@
                   %th.line--ProductStatus 商品の状態
                   %td.line--ProductStatusnow 未使用に近い
                 %tr
-                  %th 配送料の負担
-                  %td 送料込み（出品者負担）
+                  %th.line--PostageBurden 配送料の負担
+                  %td.line--Postage 送料込み（出品者負担）
                 %tr
-                  %th 発送元の地域
-                  %td
-                    %a{href: "#"} 岩手県
+                  %th.line--Shipping 発送元の地域
+                  %td.line--Shippingarea
+                    =link_to "岩手県","#",class: "line--Shippingarea__link"
                 %tr
-                  %th 発送日の目安
-                  %td 4-7日で発送
-
+                  %th.line--Date 発送日の目安
+                  %td.line--DatePeriod 4-7日で発送
             
           .itembox--option
+            %ul.itembox--option__btn
+              %li.itembox--option__btn__like
+                %i.fa.fa-star
+                お気に入り 0
+            %ul.itembox--option__btn
+              %li.itembox--option__btn__report
+                =link_to "#",class:"itembox--option__btn__report__link" do
+                  %i.fa.fa-flag
+                  不適切な商品の通報
+
+
         .prodactdetails__main__contents__topcontent__commentbox
           %ul.commentContents
-          %form#new_comment.new_comment{"accept-charset": "UTF-8", action: "#", method: "post"}
+          %form.new__comment{"accept-charset": "UTF-8", action: "#", method: "post"}
             %input{name: "utf8", type: "hidden", value: "✓"}/
             %input{name: "authenticity_token", type: "hidden", value: "✓"}/
-            %textarea#comment_body{name: "comment[body]", required: "required"}
-            %p.noticeMsg
+            %textarea.new__comment__body{name: "comment[body]", required: "required"}
+            %p.new__comment__Note
               相手のことを考え丁寧なコメントを心がけましょう。
               %br/
               不快な言葉遣いなどは利用制限や退会処分となることがあります。
             %br/
-            %button.commentBtn{name: "button", type: "submit"}
+            %button.new__comment__Btn{name: "button", type: "submit"}
               %i.fa.fa-comment
               コメントする
 
-      .prodactdetails__main__contents__links
+      %ul.prodactdetails__main__contents__links
+        %li
+          =link_to "#",class:"prodactdetails__main__contents__links__previous" do
+            %i.fa.fa-angle-left
+            %span
+            前の商品
+        %li
+          =link_to "#",class:"prodactdetails__main__contents__links__back" do
+            %span 後ろの商品
+            %i.fa.fa-angle-right
+
       .prodactdetails__main__contents__relateditems
+        =link_to "ベビー・キッズをもっと見る","#",class: "prodactdetails__main__contents__relateditems__link" 
+        .productLists
+
 = render "aside"
 = render "footer"
 = render "purchacebtn"
