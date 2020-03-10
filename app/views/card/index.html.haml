@@ -1,0 +1,22 @@
+.Productpurchase__header
+  .Productpurchase__header__logo
+    =link_to "/",class:"Productpurchase__header__logo--link" do
+      =image_tag "logo.png",class: "Productpurchase__header__logo--link--img"
+.Productpurchase__main
+  %section.Productpurchase__main__box
+    %h2.Productpurchase__main__box__title
+      購入内容の確認
+    %section.Productpurchase__main__box__item
+      .Productpurchase__main__box__item__details
+        .Productpurchase__main__box__item__details__box
+          %h3.buy-item-image
+            =image_tag "a001.png", class:"buy-item-image__tag"
+          .buy-item-detail
+            %p.buy-item-name カレーライス
+            %p.buy-price-ja.bold
+              %span ¥400
+              %span.item-shipping-fee （税込）送料込み
+    %section.Productpurchase__main__box__pay
+      .Productpurchase__main__box__pay__contents
+        %form.buy-form{action: "/", method: "POST", novalidate: "novalidate"}
+= render "shared/footer"

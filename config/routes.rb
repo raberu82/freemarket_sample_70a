@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root 'posts#index'
-  
+  root 'card#index'
+  resources :posts, only: [:index, :show]
   resources :users, only: [:index, :show, :destroy]
   resources :logouts, only: [:index]
   resources :cards, only: [:index]
