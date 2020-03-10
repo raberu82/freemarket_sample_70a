@@ -1,0 +1,95 @@
+// <mypage>
+.mypage {
+  padding: 50px 0;
+  background: rgb(245, 245, 245);
+  .container {
+    width: 1020px;
+    margin: 0 auto;
+  }
+}
+
+
+// <sidebar>
+.sidebar {
+  width: 280px;
+  float: left;
+  background-color: #ffffff;
+  margin-right: 3%;
+  &__nav__list__box {
+    padding: 5%;
+    border: 1px solid #f5f5f5;
+  }
+  &__nav__list__box span {
+    float: right;
+  }
+}
+
+
+// <main>
+.article {
+  float: right;
+  width: 700px;
+  background-color: #ffffff;
+  .top {
+    padding: 50px 0 20px 0;
+    background-image: url("bg_img.jpg");
+    background-size: cover;
+    &__img {
+      width: 180px;
+      height: 180px;
+      border-radius: 100%;
+      margin: 0 auto;
+      background-image: url("member_photo_noimage_thumb.png");
+      background-size: cover;
+    }
+    .user-name {
+      text-align: center;
+    }
+    .evaluation {
+      text-align: center;
+      padding: 10px 0;
+      span {
+        margin: 0 10px;
+      }
+    }
+  }
+  .frame {
+    border-bottom: 2px solid #f5f5f5;
+    .iine {
+      width: 360px;
+      margin: 0 auto;
+      height: 50px;
+      padding-top: 14px;
+      &__box {
+        float: left;
+        display: flex;
+        padding-right: 20px;
+        &__right {
+          width: 60px;
+          margin-left: 14px;
+          text-align: center;
+        }
+        i {
+          font-size: 25px;
+        }
+        .icon-1 {
+          color: pink;
+        }
+        .icon-2 {
+          color: orange;
+        }
+        .icon-3 {
+          color: blue;
+        }
+      }
+      &__box:nth-of-type(3) {
+        padding-right: 0;
+      }
+    }
+  }
+  .user-text {
+    padding: 5% 10%;
+  }
+}
+
+
