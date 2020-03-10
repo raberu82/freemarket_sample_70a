@@ -1,3 +1,30 @@
+@mixin exhibit-content {
+  padding: 40px;
+  border: solid 1px rgb(245, 245, 245);
+}
+@mixin exhibit-box {
+  height: 48px;
+  width: 100%;
+  padding: 0 16px;
+  color: #000;
+  background-color: rgb(255, 255, 255);
+  box-sizing: border-box;
+}
+@mixin ttl-text {
+  float: left;
+  margin-right: 10px;
+  font-weight: 700;
+}
+@mixin ttl-tag {
+  padding: 0 4px;
+  display: inline-block;
+  font-weight: 600;
+  line-height: 1.4em;
+  background-color:rgb(255, 0, 0);
+  color: #fff;
+  font-size: 12px;
+}
+
 .exhibit-wrapper{
   position: relative;
   min-height: 100%;
@@ -16,67 +43,174 @@
   }
   .exhibit-container{
     background-color: rgb(255, 255, 255);
-    height: 800px;
-    min-width: 300px;
-
+    width: 700px;
+    margin: auto;
   }
     .exhibit-img{
-      padding: 40px;
+      @include exhibit-content();
       &__ttl{
+        &__text{
+          @include ttl-text();
+        }
+        &__tag{
+          @include ttl-tag();
+        }
       }
       &__info{
+        margin : 16px 0px;
       }
       &__box{
+        align-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+        background-color: rgb(245, 245, 245);
+        cursor: pointer;
+        display: block;
+        display: flex;
+        height: 150px;
+        width: 100%;
+        display: block;
+        flex-wrap: wrap;
+        -webkit-box-pack: center;
+        justify-content: center;
+        position: relative;
+        border-width: 1px;
+        border-style: dashed;
+        border-color: rgb(204, 204, 204);
+        border-image: initial;
+        transition: all 0.5s ease-out 0s;
+      }
+      .exhibit-img__box-icom {
+        fill: rgb(34, 34, 34);
+        height: 24px;
+        margin-bottom: 8px;
+        width: 24px;
+      }
+      .exhibit-img__box-text {
+        font-size: 12px;
+        line-height: 1.4em;
+        text-align: center;
+        width: 100%;
       }
     }
     .exhibit-item{
-      &__name{
-        &__box{
+      @include exhibit-content();
+      &__ttl{
+        &__text{
+          @include ttl-text();
+        }
+        &__tag{
+          @include ttl-tag();
         }
       }
+      &__name-box{
+        @include exhibit-box();
+      }
       &__explanation{
-        &__box{
-        }
+      }
+      &__explanation-box{
+        height: 150px;
+        width: 100%;
+        padding: 13 16px;
+        box-sizing: border-box;
+      }
+      &__explanation-count{
+        float: right;
       }
     }
     .exhibit-detail{
+      @include exhibit-content();
       &__ttl{
+        color: #888888;
       }
       &__category{
-        &__box{
+        &__text{
+          @include ttl-text();
         }
+        &__tag{
+          @include ttl-tag();
+        }
+      }
+      &__category-box{
+        @include exhibit-box();
       }
       &__brand{
-        &__box{
+        &__text{
+          @include ttl-text();
+        }
+        &__tag{
+          @include ttl-tag();
         }
       }
+      &__brand-box{
+        @include exhibit-box();
+      }
       &__status{
-        &__box{
+        &__text{
+          @include ttl-text();
         }
+        &__tag{
+          @include ttl-tag();
+        }
+      }
+      &__status-box{
+        @include exhibit-box();
       }
     }
     .exhibit-delivery{
+      @include exhibit-content();
       &__ttl{
+        color: #888888;
       }
       &__payment{
-        &__box{
+        &__text{
+          @include ttl-text();
         }
+        &__tag{
+          @include ttl-tag();
+        }
+      }
+      &__payment-box{
+        @include exhibit-box();
       }
       &__prefecture{
-        &__box{
+        &__text{
+          @include ttl-text();
+        }
+        &__tag{
+          @include ttl-tag();
         }
       }
+      &__prefecture-box{
+        @include exhibit-box();
+      }
       &__days{
-        &__box{
+        &__text{
+          @include ttl-text();
         }
+        &__tag{
+          @include ttl-tag();
+        }
+      }
+      &__days-box{
+        @include exhibit-box();
       }
     }
     .exhibit-price{
+      @include exhibit-content();
       &__info{
+        color: #888888;
       }
       &__ttl{
-        &__box{
+        &__text{
+          @include ttl-text();
         }
+        &__tag{
+          @include ttl-tag();
+        }
+      }
+      &__ttl-box{
+        @include exhibit-box();
       }
       &__commission{
       }
