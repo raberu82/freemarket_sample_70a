@@ -1,0 +1,23 @@
+.header
+  .header__box
+    .header__box__main
+      .header__box__main__icon
+        = link_to "/",class: "header__box__main__icon--image" do
+          =image_tag "logo.png",class:"header__box__main__icon--image--logo"
+      .header__box__main__searchbox
+        %form.header__box__main__searchbox__form{"accept-charset" => "UTF-8", :action => "#", :method => "get"}
+          %input{name:"utf8", type:  "hidden", value:  "✓"}/
+          %input#searchInput.header__box__main__searchbox__form--input{name: "key", placeholder: "キーワードから探す"}/
+          %button.header__box__main__searchbox__form__submit{type: "submit"}
+            =image_tag "icon-search 1.png",class:"header__box__main__searchbox__form__submit--icon"
+            %input{name: "authenticity_token", type: "hidden", value: "✓"}/
+    .header__box__nav
+      %ul.header__box__nav__listleft
+        %li=link_to "カテゴリー" , "" , class:"header__box__nav__listleft__categories" 
+        %li=link_to "ブランド" , "#" , class:"header__box__nav__listleft__brand"
+        .header__box__nav__listleft__lookfor
+          %ul.header__box__nav__listleft__lookfor__tree
+            %li.header__box__nav__listleft__lookfor__tree--item
+      %ul.header__box__nav__listright
+        %li=link_to "ログイン",new_user_session_path,class:'header__box__nav__listright__login' 
+        %li=link_to '新規会員登録',new_user_registration_path,class:'header__box__nav__listright__new' 

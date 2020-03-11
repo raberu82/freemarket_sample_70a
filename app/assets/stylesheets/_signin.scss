@@ -1,0 +1,47 @@
+.sign-in__body {
+  height: 100vh;
+  background-color: #EEEEEE;
+
+  .user-main {
+    height: 100%;
+    width: 55%;
+    background-color: white;
+    margin: auto;
+
+    h2 {
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+      border-bottom: 1px solid #EEEEEE;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .main-center {
+      width: 300px;
+      margin: auto;
+
+      .field {
+        padding-top: 35px;
+        margin: auto;
+
+        input {
+          height: 45px;
+          width: 100%;
+          border-radius: 5px;
+        }
+      }
+
+      .actions {
+        input {
+          height: 50px;
+          width: 100%;
+          margin-top: 50px;
+          color: white;
+          background-color: #DD0000;
+          border-style:none;
+        }
+      }
+    }
+  }
+}

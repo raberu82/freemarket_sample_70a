@@ -1,0 +1,201 @@
+.main
+       
+  %section.main__top
+    .main__top__content
+      %h2.main__top__content__title 人生を変えるフリマアプリ
+      %p.main__top__content__text 
+        FURIMAはだれでもかんたんに出品・購入できる 
+        %br/
+        フリマアプリです
+      .main__top__content__btn
+        =link_to"#",class:"main__top__content__btn--apple" do
+          =image_tag "app_logo_apple.png",class:"apple"
+        =link_to"#",class:"main__top__content__btn--google" do
+          =image_tag "google-play-badge.png",class:"google"
+
+    -# <section2つめ>
+  %section.main__reason
+    %h2.main__reason__title
+      FURIMAが選ばれる3つの理由
+    %ul.main__reason__lists
+      %li.main__reason__lists--list
+        .main__reason__lists--list__image
+          %span.number 1
+          =image_tag "pict-reason-01.jpg",class:"number__image"
+        %h3.main__reason__lists--list__text
+          %span.text 3分 
+          ですぐに出品
+        %p.main__reason__lists--list__description
+          スマホで入力するだけで
+          %br/
+          簡単に出品できる！
+      %li.main__reason__lists--list
+        .main__reason__lists--list__image
+          %span.number 2
+          =image_tag "pict-reason-02.jpg",class:"number__image"
+        %h3.main__reason__lists--list__text
+          %span.text シンプル 
+          で使いやすい
+        %p.main__reason__lists--list__description
+          めんどくさい入力は必要なく、
+          %br/
+          検索も購入もスムーズ！
+      %li.main__reason__lists--listright
+        .main__reason__lists--listright__image
+          %span.number 3
+          =image_tag "pict-reason-03.jpg",class:"number__image"
+        %h3.main__reason__lists--listright__text
+          手数料 
+          %span.text 業界最安
+        %p.main__reason__lists--listright__description
+          最大3%でお得に出品&購入！
+    
+    -# <section3つめ>
+  %section.main__middle
+    .main__middle__content
+      %h2.main__middle__content__title 会員数日本一位
+      %p.main__middle__content__text 
+        FURIMAは、フリマアプリで最も人気。
+        %br/
+        出品・購入回数も業界最多です！
+        %br/
+        ほしかったあの商品に出会えるかもしれません。
+      .main__middle__content__btn
+        =link_to "#",class:"main__middle__content__btn--apple" do
+          =image_tag "app_logo_apple.png",class:"apple"
+        =link_to "#",class: "main__middle__content__btn--google" do
+          =image_tag "google-play-badge.png",class:"google"
+
+
+    -# <section4つめ>
+  %section.main__key
+    %h2.main__key__title
+      FURIMAの特徴
+    .main__key__items
+      %section.main__key__items__item
+        %figure.main__key__items__item--image
+          =image_tag "icon-01.png",class:"key__image"
+        %h3.main__key__items__item__title 簡単に売り買いできる
+        %p.main__key__items__item__text 
+          スマホひとつで、いつでも
+          %br/ 
+          どこでも簡単に出品・購入
+          %br/ 
+          が可能！
+      %section.main__key__items__item
+        %figure.main__key__items__item--image
+          =image_tag "icon-03.png",class:"key__image"
+        %h3.main__key__items__item__title 売上金は即日振込みに対応
+        %p.main__key__items__item__text 
+          午前9時までに振込を依頼
+          %br/ 
+          いただければ、翌日に指定
+          %br/ 
+          の口座に入金いたします!
+      %section.main__key__items__item
+        %figure.main__key__items__item--image
+          =image_tag "icon-04.png",class:"key__image"
+        %h3.main__key__items__item__title 様々な支払いに対応
+        %p.main__key__items__item__text 
+          お支払いは、クレジットカ
+          %br/ 
+          ードだけでなく、ポイント
+          %br/ 
+          や売上金など多彩な方法が
+          %br/ 
+          あります。
+
+  -# <section5つめ>
+  %section.main__pickup
+    %h2.main__pickup__title ピックアップカテゴリー
+    .main__pickup__box
+      .main__pickup__box__head
+        =link_to "新規投稿商品","#",class:'main__pickup__box__head--item' 
+      .main__pickup__box__lists
+        .main__pickup__box__lists__list
+          =link_to "/",class: "main__pickup__box__lists__list__box" do
+            %figure.main__pickup__box__lists__list__box--image
+              =image_tag "a007.png",class:"pickup__image"
+            .main__pickup__box__lists__list__box--text
+              %h3.main__pickup__box__lists__list__box--text--name product3
+              .details
+                %ul.details__price
+                  %li 30000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    0
+                %p.details__text (税込)
+        .main__pickup__box__lists__list
+          =link_to "/",class: "main__pickup__box__lists__list__box" do
+            %figure.main__pickup__box__lists__list__box--image
+              =image_tag "a003.png",class:"pickup__image"
+            .main__pickup__box__lists__list__box--text
+              %h3.name 製品名
+              .details
+                %ul.details__price
+                  %li 40000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    0
+                %p.details__text (税込)
+        .main__pickup__box__lists__list
+          =link_to "/",class: "main__pickup__box__lists__list__box" do
+            %figure.main__pickup__box__lists__list__box--image
+              =image_tag "a001.png",class:"pickup__image"
+            .main__pickup__box__lists__list__box--text
+              %h3.name 製品名
+              .details
+                %ul.details__price
+                  %li 70000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    0
+                %p.details__text (税込)
+
+    -# <section6つめ>
+  %section.main__pickup
+    %h2.main__pickup__title ピックアップブランド
+    .main__pickup__box
+      .main__pickup__box__head
+        =link_to "アーカイバ","#",class:'main__pickup__box__head--item' 
+      .main__pickup__box__lists
+        .main__pickup__box__lists__list
+          =link_to "/",class: "main__pickup__box__lists__list__box" do
+            %figure.main__pickup__box__lists__list__box--image
+              =image_tag "a007.png",class:"pickup__image"
+            .main__pickup__box__lists__list__box--text
+              %h3.name 製品名
+              .details
+                %ul.details__price
+                  %li ~円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    0
+                %p.details__text (税込)
+        .main__pickup__box__lists__list
+          =link_to "/",class: "main__pickup__box__lists__list__box" do
+            %figure.main__pickup__box__lists__list__box--image
+              =image_tag "a003.png",class:"pickup__image"
+            .main__pickup__box__lists__list__box--text
+              %h3.name 製品名
+              .details
+                %ul.details__price
+                  %li ~円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    0
+                %p.details__text (税込)
+        .main__pickup__box__lists__list
+          =link_to "/",class: "main__pickup__box__lists__list__box" do
+            %figure.main__pickup__box__lists__list__box--image
+              =image_tag "a001.png",class:"pickup__image"
+            .main__pickup__box__lists__list__box--text
+              %h3.name 製品名
+              .details
+                %ul.details__price
+                  %li ~円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    0
+                %p.details__text (税込)
+

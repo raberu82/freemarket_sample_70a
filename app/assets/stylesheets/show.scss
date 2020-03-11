@@ -1,0 +1,272 @@
+
+* {
+  box-sizing: border-box;
+  background-attachment: scroll;
+}
+
+.header__nav{
+  width: 100vw;
+  height: 55px;
+  padding: 0 200px;
+  font-family: "Source Sans Pro", Helvetica ;
+  display: block;
+  border-top-color:rgb(238, 238, 238);
+  border-top-style:solid;
+  border-top-width:1px;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  &__lists {
+    height: 100%;
+    padding: 20px 0;
+    line-height: 15px;
+    display: flex;
+    margin: 0 auto;
+    &__list {
+      padding-right: 20px;
+      font-size: 14px;
+      text-decoration: none;
+      list-style: none;
+      color: black;
+      text-align: center;
+    }
+  }
+}
+
+.prodactdetails {
+  height: calc(100% - 800px);
+  width: 100%;
+  background-color:  rgb(248,248,248);
+  &__main {
+    width: 100%;
+    height: 100%;
+    padding: 60px;
+    &__contents {
+      width: 700px;
+      height: 100%;
+      margin: 0 auto;
+      &__topcontent{
+        width: 100%;
+        &__itembox {
+          padding: 24px 60px 60px;
+          display: block;
+          background-color: white;
+          .itembox--name {
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+          }
+          .itembox--body {
+            height: 500px;
+            margin-top: 10px;
+            width: 100%;
+            &__img {
+              width: 100%;
+              height: 100%;
+              &__box {
+                margin: 0 30px;
+                &__main {
+                  width: 100%;
+                  height: 400px;
+                }
+                &__lists{
+                  margin-top: 3px;
+                  height: 100px;
+                  display: flex;
+                  justify-content: center;
+                  &__list {
+                    height: 100px;
+                    width: 150px;
+                    margin-right: 10px;
+                  }
+                }
+              }
+            }
+          }
+          .itembox--price {
+            margin: 20px 0;
+            width: 100%;
+            height: 75px;
+            text-align: center;
+            &__head {
+              font-weight: bold;
+              font-size: 24px;
+            }
+          }
+          .itembox--text {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 30px;
+          }
+          @mixin tableline--head ($width: 20%,$background-color: #eee,$font-weight: 400,$padding: 8px,
+          $border: 1px solid #dedede,$font-size: 14px,$text-align: center) {
+          width: $width;
+          background-color: $background-color;
+          font-weight: $font-weight;
+          padding: $padding;
+          border: $border;
+          font-size: $font-size;
+          text-align: $text-align;
+          }
+          @mixin tableline--details ($width: 61%,$padding: 15px 15px,
+          $border: 1px solid #dedede,$font-size: 14px){
+          width: $width;
+          padding: $padding;
+          border: $border;
+          font-size: $font-size;
+          }
+          .itembox--table {
+            width: 100%;
+            margin-bottom: 20px;
+            &__details {
+              width: 100%;
+              border-collapse: collapse;
+              border: 1px solid grey;
+              &__mass {
+                display: table-row-group;
+                vertical-align: middle;
+                border-color: inherit;
+                .line--Seller {
+                  height: 47px;
+                  @include tableline--head();
+                }
+                .line--SellerName {
+                  height: 47px;
+                  @include tableline--details();
+                }
+                .line--Categories {
+                  @include tableline--head();
+                }
+                .line--CategoriesName {
+                  @include tableline--details();
+                  &__link {
+                    text-decoration: none;
+                    color: #3CCACE;
+                  }
+                }
+                .line--Bland {
+                  @include tableline--head();
+                }
+                .line--BlandName{
+                  @include tableline--details();
+                }
+                .line--ProductSize {
+                  @include tableline--head();
+                }
+                .line--ProductSizeNumber {
+                  @include tableline--details();
+                }
+                .line--ProductStatus {
+                  @include tableline--head();
+                }
+                .line--ProductStatusnow {
+                  @include tableline--details();
+                }
+                .line--PostageBurden {
+                  @include tableline--head();
+                }
+                .line--Postage{
+                  @include tableline--details();
+                }
+                .line--Shipping {
+                  @include tableline--head();
+                }
+                .line--Shippingarea{
+                  @include tableline--details();
+                  &__link {
+                    text-decoration: none;
+                    color: #3CCACE;
+                  }
+                }
+                .line--Date {
+                  @include tableline--head();
+                }
+                .line--DatePeriod {
+                  @include tableline--details();
+                }
+              }
+            }
+          }
+          .itembox--option {
+            height: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            &__btn {
+              display: flex;
+              margin-top: 10px;
+              &__like {
+                margin-right: auto;
+                padding: 6px 10px;
+                border-radius: 40px;
+                color: #3CCACE;
+                border: 1px solid #ffb340;
+              }
+              &__report {
+                padding: 6px 10px;
+                display: inline-block;
+                border-radius: 4px;
+                border: 1px solid #333;
+                &__link {
+                  text-decoration: none;
+                  color: #333;
+                }
+              }
+            }
+          }
+        }
+        &__commentbox {
+          padding: 24px;
+          background-color: #fff;
+          margin: 10px 0;
+          text-align: center;
+          .new__comment__body {
+            width: 100%;
+            min-height: 104px;
+            padding: 10px;
+          }
+          .new__comment__Note {
+            padding: 8px;
+            font-size: 14px;
+            background-color: #f8f8f8;
+            margin: 10px 0;
+            text-align: left;
+          }
+          .new__comment__Btn {
+            line-height: 48px;
+            background: #3CCACE;
+            border: 1px solid #3CCACE;
+            color: #fff;
+            width: 60%;
+            font-size: 18px;
+            border-radius: 100px;
+          }
+        }
+      }
+      &__links {
+        height: 50px;
+        width: 100%;
+        &__previous {
+          text-decoration: none;
+          color: #3CCACE;
+          float: left;
+        }
+        &__back {
+          text-decoration: none;
+          color: #3CCACE;
+          float: right;
+        }
+      }
+      &__relateditems {
+        width: 100%;
+        &__link {
+          display: block;
+          margin: 24px 0 8px;
+          color: #3CCACE;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 22px;
+          position: relative;
+        }
+      }
+    }
+  }
+}
