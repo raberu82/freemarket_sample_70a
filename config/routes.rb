@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  root 'posts#index'
+  root to: "posts#index"
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-  # devise_scope :user do
-  #   get 'deliverys', to: 'users/registrations#new_deliverys'
-  #   # post 'deliverys', to: 'users/registrations#create_deliverys'
-  # end
+  devise_scope :user do
+    get 'addresses', to: 'users/registrations#new_address'
+    post 'addresses', to: 'users/registrations#create_address'
+  end
 end
