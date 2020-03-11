@@ -1,8 +1,8 @@
-.Productpurchase__header
+%header.Productpurchase__header
   .Productpurchase__header__logo
     =link_to "/",class:"Productpurchase__header__logo--link" do
       =image_tag "logo.png",class: "Productpurchase__header__logo--link--img"
-.Productpurchase__main
+%main.Productpurchase__main
   %section.Productpurchase__main__box
     %h2.Productpurchase__main__box__title
       購入内容の確認
@@ -19,4 +19,44 @@
     %section.Productpurchase__main__box__pay
       .Productpurchase__main__box__pay__contents
         %form.buy-form{action: "/", method: "POST", novalidate: "novalidate"}
-= render "shared/footer"
+          %ul.buy-form__price
+            %li.buy-form__price__table
+              .buy-form__price__table__head 支払い金額
+              .buy-form__price__table__cell
+                %span ¥400-
+          %ul.buy-form__point
+            %li.buy-form__point__teble
+              .buy-form__point__teble__use
+                %i.fas.fa-square
+                %label.buy-form__point__teble__use--label ポイントを使用 (所持ポイント: P0)
+          %section.buy-form__pay
+            .buy-form__pay__method
+              %h3.buy-form__pay__method__head 支払い方法
+              =link_to "#",class:"buy-form__pay__method__link" do
+                %p.buy-form__pay__method__link__text
+                  %i.fas.fa-plus-circle
+                  %span.buy-register-text 登録してください
+          %section.buy-form__delivery
+            .buy-form__delivery__method
+              %h3.buy-form__delivery__method__head 配送先
+              =link_to "#",class:"buy-form__delivery__method__link" do
+                %p.buy-form__delivery__method__link__text
+                  %i.fas.fa-plus-circle
+                  %span.buy-register-text 登録してください
+          %section.buy-form__purchace
+            %button.buy-form__purchace__btn{disabled: "disabled", type: "submit"} 購入する
+            %input#user_info_is_not_complete{type: "hidden"}/
+%footer.Productpurchase__footer
+  .Productpurchase__footer__box
+    %nav.Productpurchase__footerr__box__nav
+    %ul.Productpurchase__footer__box__nav__clearfix
+      %li
+        =link_to "プライバシーポリシー","#",class:"Productpurchase__footer__box__nav__clearfix__list" 
+      %li.Productpurchase__footer__nav__clearfix__list
+        =link_to "メルカリ利用規約","#",class:"Productpurchase__footer__box__nav__clearfix__list"
+      %li.Productpurchase__footer__nav__clearfix__list
+        =link_to "特定商取引に関する表記","#",class:"Productpurchase__footer__box__nav__clearfix__list" 
+    =link_to "#",class:"Productpurchase__footer__box__logo" do
+      =image_tag "logo.png",class: "Productpurchase__footer__box__logo--img"
+    %p
+      %small © Mercari, Inc.
