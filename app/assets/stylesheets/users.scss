@@ -32,14 +32,14 @@
   background-color: #ffffff;
   .top {
     padding: 50px 0 20px 0;
-    background-image: url("bg_img.jpg");
+    background-image: image-url("bg_img.jpg");
     background-size: cover;
     &__img {
       width: 180px;
       height: 180px;
       border-radius: 100%;
       margin: 0 auto;
-      background-image: url("member_photo_noimage_thumb.png");
+      background-image: image-url("member_photo_noimage_thumb.png");
       background-size: cover;
     }
     .user-name {
