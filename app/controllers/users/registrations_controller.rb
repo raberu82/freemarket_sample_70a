@@ -9,6 +9,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
   end
 
+  def show
+  end
+
   # POST /resource
   def create
     @user = User.new(sign_up_params)
