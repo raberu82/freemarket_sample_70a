@@ -2,6 +2,9 @@ class CardController < ApplicationController
 
   require "payjp"
 
+  def index
+  end
+
   def new
     card = Card.where(user_id: current_user.id)
     redirect_to action: "show" if card.exists?
@@ -48,6 +51,6 @@ class CardController < ApplicationController
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
     end
-  def index
   end
+  
 end
