@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :nickname, :password , :email , presence: true
   has_one :address
+  has_one :profile
   accepts_nested_attributes_for :profile
 end
