@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
+    @user = User.find(params[:id])
     # @images = Item_image.find(params[:id])
   end
 end
