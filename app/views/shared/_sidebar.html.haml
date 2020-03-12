@@ -1,12 +1,15 @@
 .sidebar
   %nav.sidebar__nav
     %ul.sidebar__nav__list
-      %li.sidebar__nav__list__box
-        マイページ
-        %span >
-      %li.sidebar__nav__list__box
-        お支払い方法登録
-        %span >
-      %li.sidebar__nav__list__box
-        ログアウト
-        %span >
+      %li
+        =link_to users_path, class: 'sidebar__nav__list__box' do
+          マイページ
+          = icon('fas', 'chevron-right', class: "icon-a")
+      %li
+        =link_to card_new_path, class: 'sidebar__nav__list__box' do
+          お支払い方法登録
+          = icon('fas', 'chevron-right', class: "icon-a")
+      %li
+        =link_to logouts_path, class: 'sidebar__nav__list__box' do
+          ログアウト
+          = icon('fas', 'chevron-right', class: "icon-a")
