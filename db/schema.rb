@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_075900) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
