@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   get 'card/new'
   get 'card/show'
   root 'posts#index'
-  resources :users, only: [:index, :show, :destroy]
-  resources :logouts, only: [:index]
+  resources :users, only: [:index, :show]
+  resources :logouts, only: [:index, :destroy]
   resources :card, only: [:new, :show] do
     collection do
       post 'show', to: 'card#show'

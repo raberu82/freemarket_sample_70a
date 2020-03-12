@@ -56,6 +56,5 @@
             必須
         .inputbox
           = text_field_tag "cvc", "", class: "inputbox__area", placeholder: "カード背面3~4桁の番号", maxlength: "4"
-    .cards__content__area
-      .cards__content__area__btn
-        登録する
+      .cards__content__area
+        = submit_tag "登録する", class: "cards__content__area__btn"
