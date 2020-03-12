@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   get 'card/new'
   get 'card/show'
-  root to: "posts#index"
+  
   resources :posts, only: [:index, :show, :new]
   resources :users, only: [:index, :show]
   resources :logouts, only: [:index, :destroy]
@@ -19,5 +19,5 @@ Rails.application.routes.draw do
       post 'delete', to: 'card#delete'
     end
   end
-
+  root to: "posts#index"
 end
