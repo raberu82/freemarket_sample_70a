@@ -31,14 +31,11 @@
           .itembox--body
             %ul.itembox--body__img
               %li.itembox--body__img__box
-                =image_tag @item_image.item_image,class:"itembox--body__img__box__main"
+                =image_tag @image.item_image,class:"itembox--body__img__box__main"
                 %ul.itembox--body__img__box__lists
-                  %li.itembox--body__img__box__lists__list
-                    =image_tag @item_image.item_image,class:"itembox--body__img__box__lists__list"
-                  %li.itembox--body__img__box__lists__list
-                    =image_tag @item_image.item_image,class:"itembox--body__img__box__lists__list"
-                  %li.itembox--body__img__box__lists__list
-                    =image_tag @item_image.item_image,class:"itembox--body__img__box__lists__list"
+                  - @images.each do |image|
+                    %li.itembox--body__img__box__lists__list
+                      = image_tag "#{image.item_image}", alt: "サムネイル", class: "itembox--body__img__box__lists__list"
           .itembox--price
             %span.itembox--price__head 
               = @item.price 

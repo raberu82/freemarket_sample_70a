@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   def index
     @items = Item.all.order("created_at DESC")
-    @item_image = ItemImage.all
   end
 
   def new
@@ -10,22 +9,25 @@ class PostsController < ApplicationController
   end
 
   def create
-    @item = Item.new(product_params)
-    @item.user_id = current_user.id
     if @item.save
-      binding.pry
-      params[:item_images]['name'].each do |a|
-        @item_image = @item.item_images.create!(name: a)
+
+      params[:item_images]['image'].each do |img|
+        @item_image = @item.item_images.create(:image => img, :item_id => @item.id)
       end
-      redirect_to root_path, notice: '出品しました。'
-    else
-      render :new
+
+      redirect_to item_path(@item.id)
     end
   end
   
   def show
     @item = Item.find(params[:id])
     @user = @item.user
-    @item_image = ItemImage.find(params[:id])
+    @images = @item.item_images
+    @image = @images.first
+  end
+
+  private
+  def product_params
+    params.require(:item).permit(item_images_attributes: [:id, :item_id, :item_image])
   end
 end
