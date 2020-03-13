@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.all.order("created_at DESC")
+    @item_image = ItemImage.all
   end
 
   def new
@@ -10,6 +11,7 @@ class PostsController < ApplicationController
 
   def create
     @item = Item.new(product_params)
+    @item.user_id = current_user.id
     if @item.save
       binding.pry
       params[:item_images]['name'].each do |a|
@@ -23,7 +25,7 @@ class PostsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
-    @user = User.find(params[:id])
+    @user = @item.user
     @item_image = ItemImage.find(params[:id])
   end
 end

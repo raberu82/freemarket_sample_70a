@@ -45,7 +45,8 @@
               = @item.price 
             .itembox--price__details
               %span (税込)
-              %span 送料込み
+              %span 
+                = @item.postage
           .itembox--text
             = @item.explanation
           .itembox--table
