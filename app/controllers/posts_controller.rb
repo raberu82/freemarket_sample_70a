@@ -24,6 +24,6 @@ class PostsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @user = User.find(params[:id])
-    @item_image = @item.item_images.build
+    @item_image = ItemImage.find(params[:id])
   end
 end
