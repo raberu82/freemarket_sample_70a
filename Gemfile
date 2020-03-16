@@ -77,3 +77,8 @@ gem 'jquery-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'ancestry'
+gem 'payjp'
+gem 'dotenv'
+gem 'jquery-rails'
+# gem 'turbolinks', '~> 5'
+
