@@ -56,7 +56,7 @@
           - elsif @item.buyer_id == current_user.id
             .item__buy
               = link_to '購入画面へ進む', "/", class: "item__buy__btn"
-          - else @item.user_id == current_user.id
+          - elsif @item.user_id == current_user.id
             .item__buy
               = link_to '商品の編集', edit_post_path, class: "item__buy__btn"
             .item__delete

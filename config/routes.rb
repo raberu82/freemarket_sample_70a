@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'card/show'
 
   
-  resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  resources :posts
   resources :users, only: [:index, :show]
   resources :logouts, only: [:index, :destroy]
   resources :card, only: [:index, :new, :show] do
