@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @items = Item.all.order("created_at DESC")
+    @items = Item.order("created_at DESC")
   end
 
   def new
@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    @item = Item.new(item_params)
     if @item.save
 
       params[:item_images]['image'].each do |img|
@@ -19,10 +20,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def  done
-    @item= Item.find(params[:id])
-    @item.update( item_id: current_user.id)
-  end
+  
   
   def show
     @item = Item.find(params[:id])
@@ -41,7 +39,7 @@ class PostsController < ApplicationController
   end
 
   private
-  def product_params
+  def item_params
     params.require(:item).permit(item_images_attributes: [:id, :item_id, :item_image])
   end
 end

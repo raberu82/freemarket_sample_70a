@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
   end
-  resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  resources :posts
   resources :users
   resources :logouts, only: [:index]
   resources :card, only: [:index]
