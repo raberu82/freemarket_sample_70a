@@ -37,14 +37,30 @@
                   - @images.each do |image|
                     %li.itembox--body__img__box__lists__list
                       = image_tag "#{image.item_image}", alt: "サムネイル", class: "itembox--body__img__box__lists__list"
+                -if @item.id.present? 
+                  .items-box_photo__sold
+                    .items-box_photo__sold__inner
+                      SOLD
+                      
           .itembox--price
             %span.itembox--price__head 
-              = @item.price 
+              = @item.price.to_s(:delimited)
               円
             .itembox--price__details
               %span (税込)
               %span 
                 = @item.postage
+          - if @item.buyer_id.present? 
+            .item__sold
+              売り切れました
+          - elsif @item.buyer_id == current_user.id
+            .item__buy
+              = link_to '購入画面へ進む', "/", class: "item__buy__btn"
+          - else @item.user_id == current_user.id
+            .item__buy
+              = link_to '商品の編集', edit_post_path, class: "item__buy__btn"
+            .item__delete
+              = link_to '商品の削除',"/", method: :delete, class: "item__buy__btn"
           .itembox--text
             = @item.explanation
           .itembox--table
@@ -84,7 +100,8 @@
                   %th.line--Date 発送日の目安
                   %td.line--DatePeriod 
                     = @item.shipping_days
-            
+                    %span.product-fee_payer
+          
           .itembox--option
             %ul.itembox--option__btn
               %li.itembox--option__btn__like
@@ -126,7 +143,6 @@
       .prodactdetails__main__contents__relateditems
         =link_to "ベビー・キッズをもっと見る","#",class: "prodactdetails__main__contents__relateditems__link" 
         .productLists
-
 = render "aside"
 = render "shared/footer"
 = render "purchacebtn"

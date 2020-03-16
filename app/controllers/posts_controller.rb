@@ -18,12 +18,26 @@ class PostsController < ApplicationController
       redirect_to item_path(@item.id)
     end
   end
+
+  def  done
+    @item= Item.find(params[:id])
+    @item.update( item_id: current_user.id)
+  end
   
   def show
     @item = Item.find(params[:id])
     @user = @item.user
     @images = @item.item_images
     @image = @images.first
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
   end
 
   private

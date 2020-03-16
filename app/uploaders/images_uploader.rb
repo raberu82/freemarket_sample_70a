@@ -19,7 +19,19 @@ class ImagesUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
-
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end
+  def filename
+    super.chomp(File.extname(super)) + '.jpg' 
+  end
+  def filename
+    if original_filename.present?
+      time = Time.now
+      name = time.strftime('%Y%m%d%H%M%S') + '.jpg'
+      name.downcase
+    end
+  end
   # Process files as they are uploaded:
   # process scale: [200, 300]
   #
