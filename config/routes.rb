@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   get 'card/show'
 
   
-  resources :posts
+  resources :posts do
+    collection do
+      delete 'delete', to: 'posts#destroy'
+    end
+  end
   resources :users, only: [:index, :show]
   resources :logouts, only: [:index, :destroy]
   resources :card, only: [:index, :new, :show] do
