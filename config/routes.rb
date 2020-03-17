@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root 'posts#index'
-  resources :posts, only: [:index, :show, :new]
+  resources :posts, only: [:index, :show, :new, :create] do
+    collection do
+      get 'get_categorie_children', defaults: { format: 'json' }
+      get 'get_categorie_grandchildren', defaults: { format: 'json' }
+    end
+  end
+
   resources :users, only: [:index, :show, :destroy]
   resources :logouts, only: [:index]
   resources :card, only: [:index]
