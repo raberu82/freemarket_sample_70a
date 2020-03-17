@@ -1,5 +1,5 @@
-.body {
-  height: 100vh;
+.address-body {
+  height: 100%;
   background-color: #EEEEEE;
 
   .user-main {
@@ -56,7 +56,7 @@
       }
     }
     .actions {
-      width: 50%;
+      width: 100%;
       margin: auto;
 
       input {

@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :nickname, :password , :email , presence: true
-  has_one :address
-  has_one :profile
-  accepts_nested_attributes_for :profile
+
+  has_one  :profile, dependent: :destroy
+  has_one  :address, dependent: :destroy
+  has_many :items
 end

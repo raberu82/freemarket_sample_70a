@@ -1,7 +1,7 @@
-.body
+.address-body
   .user-main
     %h2 住所情報登録
-    = form_for @address do |f|
+    = form_for @address, url: profile_path, method: :get do |f|
       = render "devise/shared/error_messages", resource: @address
       .main-center
         .field
