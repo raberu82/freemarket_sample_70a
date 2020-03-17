@@ -32,6 +32,11 @@ class PostsController < ApplicationController
   end
 
   def edit
+    if @item.present?
+      render :edit
+    else
+      redirect_to root_path, notice: '商品の情報がありません'
+    end
   end
 
   def update
