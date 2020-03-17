@@ -19,7 +19,7 @@
           %span.item__conditions
             必須
         .inputbox
-          %select.inputbox__area.expiration
+          %select#exp_month.inputbox__area.expiration
             %option{value:""}-
             %option{value:"1"}1
             %option{value:"2"}2
@@ -34,7 +34,7 @@
             %option{value:"11"}11
             %option{value:"12"}12
           月/
-          %select.inputbox__area.expiration
+          %select#exp_year.inputbox__area.expiration
             %option{value:""}-
             %option{value:"2020"}2020
             %option{value:"2021"}2021
@@ -57,4 +57,5 @@
         .inputbox
           = text_field_tag "cvc", "", class: "inputbox__area", placeholder: "カード背面3~4桁の番号", maxlength: "4"
       .cards__content__area
-        = submit_tag "登録する", class: "cards__content__area__btn"
+        #card_token
+        = submit_tag "登録する", class: "cards__content__area__btn", id: "token_submit"
