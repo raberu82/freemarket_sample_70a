@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_current_user
   def index
     @items = Item.order("created_at DESC")
   end
@@ -38,8 +40,25 @@ class PostsController < ApplicationController
   def destroy
   end
 
+  def ensure_correct_user
+    @item = Item.find_by(id:params[:id])
+    if @item.user_id != @current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to("/posts/index")
+    end
+  end
+
   private
   def item_params
-    params.require(:item).permit(item_images_attributes: [:id, :item_id, :item_image])
+    params.require(:item).permit(item_images_attributes: [:id, :item_id, :item_image]).merge(user_id: current_user.id)
+    # :name, :discription, :price, :condition, :shipping_charge, :shipping_date, :prefecture
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def set_current_user
+    @current_user = User.find_by(id: session[:user_id])
   end
 end
