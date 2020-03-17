@@ -1,0 +1,20 @@
+.article.cards
+  .cards__title
+    %label 登録クレジットカード情報
+  %br
+  .cards__content
+    .framing
+      .item
+        %label.item__title
+          カード番号：
+        = "**** **** **** " + @default_card_information.last4
+      %br
+    .framing
+      .item
+        %label.item__title
+          有効期限：
+        - exp_month = @default_card_information.exp_month.to_s
+        - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+        = exp_month + " / " + exp_year
+    .cards__content__area
+      =link_to "削除する", delete_card_index_path, method: :delete, class: "cards__content__area__btn"
