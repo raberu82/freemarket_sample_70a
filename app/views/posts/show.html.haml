@@ -37,7 +37,7 @@
                   - @images.each do |image|
                     %li.itembox--body__img__box__lists__list
                       = image_tag "#{image.item_image}", alt: "サムネイル", class: "itembox--body__img__box__lists__list"
-                -if @item.id.present? 
+                -if @item.buyer_id.present? 
                   .items-box_photo__sold
                     .items-box_photo__sold__inner
                       SOLD
@@ -53,14 +53,14 @@
           - if @item.buyer_id.present? 
             .item__sold
               売り切れました
-          - elsif @item.buyer_id == current_user.id
-            .item__buy
-              = link_to '購入画面へ進む', "/", class: "item__buy__btn"
-          - elsif @item.user_id == current_user.id
+          - elsif @item.user_id == current_user.id  
             .item__buy
               = link_to '商品の編集', edit_post_path, class: "item__buy__btn"
             .item__delete
               = link_to '商品の削除',"/", method: :delete, class: "item__buy__btn"
+          - elsif @item.buyer_id.nil? 
+            .item__buy
+              = link_to '購入画面へ進む', "/", class: "item__buy__btn"
           .itembox--text
             = @item.explanation
           .itembox--table
