@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_current_user
   def index
-    @items = Item.order("created_at DESC")
+    @items = Item.order("created_at DESC").limit(3)
   end
 
   def new
@@ -40,9 +40,19 @@ class PostsController < ApplicationController
   end
 
   def update
+    if @item.update(item_params)
+      redirect_to root_path, notice: '商品情報を更新しました'
+    else
+      render :edit, notice: '商品の更新に失敗しました'
+    end
   end
 
   def destroy
+    if @item.destroy
+      redirect_to root_path, notice: '商品情報を削除しました'
+    else
+      render :edit, notice: '削除に失敗しました'
+    end
   end
 
   def ensure_correct_user
