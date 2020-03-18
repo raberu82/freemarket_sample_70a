@@ -38,7 +38,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @profile = Profile.new(plofile_params)
     unless @profile.valid?
       flash.now[:alert] = @profile.errors.full_messages
-      binding.pry
       render :new_profile and return
     end
     @user.build_address(@address.attributes)
