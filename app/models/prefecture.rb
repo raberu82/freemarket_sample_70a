@@ -18,3 +18,22 @@ class Prefecture < ActiveHash::Base
       {id: 46, name: '鹿児島県'}, {id: 47, name: '沖縄県'}
   ]
 end
+
+class Status < ActiveHash::Base
+  self.data = [
+      {id: 1, name: '新品、未使用'}, {id: 2, name: '未使用に近い'}, {id: 3, name: '目立った傷や汚れなし'},
+      {id: 4, name: 'やや傷や汚れあり'}, {id: 5, name: '傷や汚れあり'}, {id: 6, name: '全体的に状態が悪い'}
+  ]
+end
+
+class Postage < ActiveHash::Base
+  self.data = [
+      {id: 1, name: '送料込み（出品者負担）'}, {id: 2, name: '着払い（購入者負担）'}
+  ]
+end
+
+class Shipping < ActiveHash::Base
+  self.data = [
+      {id: 1, name: '１~２日で発送'}, {id: 2, name: '２~３日で発送'}, {id: 3, name: '４~７日で発送'}
+  ]
+end
