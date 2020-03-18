@@ -18,6 +18,18 @@
   &__nav__list__box {
     padding: 5%;
     border: 1px solid #f5f5f5;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    position: relative;
+    .icon-a {
+      position: absolute;
+      top: 35%;
+      right: 16px;
+    }
+  }
+  &__nav__list__box:link, &__nav__list__box:visited, &__nav__list__box:hover, &__nav__list__box:active {
+    color: black;
   }
   &__nav__list__box span {
     float: right;

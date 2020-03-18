@@ -112,45 +112,29 @@
       .main__pickup__box__head
         =link_to "新規投稿商品","#",class:'main__pickup__box__head--item' 
       .main__pickup__box__lists
-        .main__pickup__box__lists__list
-          =link_to "/",class: "main__pickup__box__lists__list__box" do
-            %figure.main__pickup__box__lists__list__box--image
-              =image_tag "a007.png",class:"pickup__image"
-            .main__pickup__box__lists__list__box--text
-              %h3.main__pickup__box__lists__list__box--text--name product3
-              .details
-                %ul.details__price
-                  %li 30000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p.details__text (税込)
-        .main__pickup__box__lists__list
-          =link_to "/",class: "main__pickup__box__lists__list__box" do
-            %figure.main__pickup__box__lists__list__box--image
-              =image_tag "a003.png",class:"pickup__image"
-            .main__pickup__box__lists__list__box--text
-              %h3.name 製品名
-              .details
-                %ul.details__price
-                  %li 40000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p.details__text (税込)
-        .main__pickup__box__lists__list
-          =link_to "/",class: "main__pickup__box__lists__list__box" do
-            %figure.main__pickup__box__lists__list__box--image
-              =image_tag "a001.png",class:"pickup__image"
-            .main__pickup__box__lists__list__box--text
-              %h3.name 製品名
-              .details
-                %ul.details__price
-                  %li 70000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p.details__text (税込)
+        - @items.each do |item|
+          - item.item_images.first(1).each do |img|
+            .main__pickup__box__lists__list
+              =link_to post_path(item),class: "main__pickup__box__lists__list__box" do
+                %figure.main__pickup__box__lists__list__box--image
+                  =image_tag img.item_image,class:"pickup__image"
+                .main__pickup__box__lists__list__box--text
+                  %h3.main__pickup__box__lists__list__box--text--name 
+                    = item.name
+                  .details
+                    %ul.details__price
+                      %li 
+                        = item.price.to_s(:delimited)
+                        円
+                      %li
+                        %i.fa.fa-star.likeIcon
+                        0
+                    %p.details__text (税込)
+                -if item.buyer_id.present? 
+                  .items-box_photo__sold
+                    .items-box_photo__sold__inner
+                      SOLD
+                      
 
     -# <section6つめ>
   %section.main__pickup
@@ -159,43 +143,26 @@
       .main__pickup__box__head
         =link_to "アーカイバ","#",class:'main__pickup__box__head--item' 
       .main__pickup__box__lists
-        .main__pickup__box__lists__list
-          =link_to "/",class: "main__pickup__box__lists__list__box" do
-            %figure.main__pickup__box__lists__list__box--image
-              =image_tag "a007.png",class:"pickup__image"
-            .main__pickup__box__lists__list__box--text
-              %h3.name 製品名
-              .details
-                %ul.details__price
-                  %li ~円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p.details__text (税込)
-        .main__pickup__box__lists__list
-          =link_to "/",class: "main__pickup__box__lists__list__box" do
-            %figure.main__pickup__box__lists__list__box--image
-              =image_tag "a003.png",class:"pickup__image"
-            .main__pickup__box__lists__list__box--text
-              %h3.name 製品名
-              .details
-                %ul.details__price
-                  %li ~円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p.details__text (税込)
-        .main__pickup__box__lists__list
-          =link_to "/",class: "main__pickup__box__lists__list__box" do
-            %figure.main__pickup__box__lists__list__box--image
-              =image_tag "a001.png",class:"pickup__image"
-            .main__pickup__box__lists__list__box--text
-              %h3.name 製品名
-              .details
-                %ul.details__price
-                  %li ~円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p.details__text (税込)
-
+        - @items.each do |item|
+          - item.item_images.first(1).each do |img|
+            .main__pickup__box__lists__list
+              =link_to post_path(item),class: "main__pickup__box__lists__list__box" do
+                %figure.main__pickup__box__lists__list__box--image
+                  =image_tag img.item_image,class:"pickup__image"
+                .main__pickup__box__lists__list__box--text
+                  %h3.main__pickup__box__lists__list__box--text--name 
+                    = item.name
+                  .details
+                    %ul.details__price
+                      %li 
+                        = item.price.to_s(:delimited)
+                        円
+                      %li
+                        %i.fa.fa-star.likeIcon
+                        0
+                    %p.details__text (税込)
+                -if item.buyer_id.present? 
+                  .items-box_photo__sold
+                    .items-box_photo__sold__inner
+                      SOLD
+        
