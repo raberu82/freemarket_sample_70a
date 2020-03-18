@@ -1,5 +1,5 @@
 .body {
-  height: 100vh;
+  height: 100%;
   background-color: #EEEEEE;
 
   .user-main {
@@ -54,18 +54,16 @@
           vertical-align: top;
         }
       }
-    }
-    .actions {
-      width: 50%;
-      margin: auto;
+      .actions {
 
-      input {
-        height: 50px;
-        width: 100%;
-        margin-top: 50px;
-        color: white;
-        background-color: #DD0000;
-        border-style:none;
+        input {
+          height: 50px;
+          width: 100%;
+          margin-top: 50px;
+          color: white;
+          background-color: #DD0000;
+          border-style:none;
+        }
       }
     }
   }
