@@ -1,8 +1,8 @@
 .body
   .user-main
     %h2 プロフィール
-    = form_for @profile do |f|
-      = render "devise/shared/error_messages", resource: @address
+    = form_for @profile, url: profile_path, method: :post do |f|
+      = render "devise/shared/error_messages", resource: @profile
       .main-center
         .field
           = f.label :お名前（全角）
