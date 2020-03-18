@@ -15,7 +15,12 @@ Rails.application.routes.draw do
   get 'card/show'
 
   
-  resources :posts 
+  resources :posts do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
   
   resources :users, only: [:index, :show]
   resources :logouts, only: [:index, :destroy]
