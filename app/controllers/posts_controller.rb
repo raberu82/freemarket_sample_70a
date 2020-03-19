@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_user
+  
   def index
     @items = Item.order("created_at DESC").limit(3)
   end
@@ -85,10 +85,5 @@ class PostsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def set_current_user
-    @category_parent_array = []
-      Category.where(ancestry: nil).each do |parent|
-        @category_parent_array << parent
-      end
-  end
+  
 end
