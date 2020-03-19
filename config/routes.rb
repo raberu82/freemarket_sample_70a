@@ -15,7 +15,12 @@ Rails.application.routes.draw do
   get 'card/show'
 
   
-  resources :posts 
+  resources :posts do
+    collection do
+      get 'category_children'
+      get 'category_grandchildren'
+    end
+  end
   
   resources :users, only: [:index, :show]
   resources :logouts, only: [:index, :destroy]

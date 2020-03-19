@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_user
+  
   def index
     @items = Item.order("created_at DESC").limit(3)
   end
@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   def new
     @item = Item.new
     @item_image = @item.item_images.build
+    @category = Category.all.order("id ASC").limit(13)
   end
 
   def create
@@ -29,6 +30,7 @@ class PostsController < ApplicationController
     @user = @item.user
     @images = @item.item_images
     @image = @images.first
+    
   end
 
   def edit
@@ -63,6 +65,16 @@ class PostsController < ApplicationController
     end
   end
 
+
+  def category_children  
+    @category_children = Category.find(params[:productcategory]).children 
+  end
+
+
+  def category_grandchildren
+    @category_grandchildren = Category.find(params[:productcategory]).children
+  end
+
   private
   def item_params
     params.require(:item).permit(item_images_attributes: [:id, :item_id, :item_image]).merge(user_id: current_user.id)
@@ -73,7 +85,5 @@ class PostsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def set_current_user
-    @current_user = User.find_by(id: session[:user_id])
-  end
+  
 end
