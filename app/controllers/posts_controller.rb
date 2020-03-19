@@ -1,13 +1,14 @@
 class PostsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_current_user
-  before_action :set_category, only: [:new, :create, :edit, :update]
+  def index
     @items = Item.order("created_at DESC").limit(3)
   end
 
   def new
     @item = Item.new
     @item_image = @item.item_images.build
+    @category = Category.all.order("id ASC").limit(13)
   end
 
   def create
@@ -63,6 +64,16 @@ class PostsController < ApplicationController
     end
   end
 
+
+  def category_children  
+    @category_children = Category.find(params[:productcategory]).children 
+  end
+
+
+  def category_grandchildren
+    @category_grandchildren = Category.find(params[:productcategory]).children
+  end
+
   private
   def item_params
     params.require(:item).permit(item_images_attributes: [:id, :item_id, :item_image]).merge(user_id: current_user.id)
@@ -78,9 +89,5 @@ class PostsController < ApplicationController
       Category.where(ancestry: nil).each do |parent|
         @category_parent_array << parent
       end
-  end
-
-  def set_category
-    @category = Category.find(params[:id])
   end
 end
