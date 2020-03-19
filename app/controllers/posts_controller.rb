@@ -5,8 +5,8 @@ class PostsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
-    @item.build_categorie
-    @item.build_brands
+    @item.categorie.new
+    @item.brand.new
     @prefecture = Addresse.where('prefecture_id IN(?)', params[:prefecture_id])
     @categorie_parent_array = ["---"]
     Categorie.where(ancestry: nil).each do |f|
@@ -31,5 +31,5 @@ end
 private
 
 def item_params
-  params.require(:item).permit(:name, :price, :explanation, :status, :postage, :ship_form_address, :shipping_days, item_images_attributes: [:item_image,:_destroy,:id], categories_attributes: [:name],brands_attributes: [:name]).merge(user_id: current_user.id)
+  params.require(:item).permit(:name, :price, :explanation, :status, :postage, :ship_form_address, :shipping_days, item_images_attributes: [:item_image,:id], categorie_attributes: [:name],brand_attributes: [:name])
 end
