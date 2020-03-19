@@ -1,4 +1,8 @@
 .body
+  %header.Productpurchase__header
+    .Productpurchase__header__logo
+      =link_to "/",class:"Productpurchase__header__logo--link" do
+        =image_tag "logo.png",class: "Productpurchase__header__logo--link--img"
   .user-main
     %h2 会員情報入力
     = form_for(@user, url: addresses_path, method: :get) do |f|
@@ -26,4 +30,18 @@
           = f.password_field :password_confirmation, autocomplete: "new-password"
       .actions
         = f.submit "次へ進む"
+  %footer.Productpurchase__footer
+    .Productpurchase__footer__box
+      %nav.Productpurchase__footerr__box__nav
+      %ul.Productpurchase__footer__box__nav__clearfix
+        %li
+          =link_to "プライバシーポリシー","#",class:"Productpurchase__footer__box__nav__clearfix__list" 
+        %li.Productpurchase__footer__nav__clearfix__list
+          =link_to "フリマ利用規約","#",class:"Productpurchase__footer__box__nav__clearfix__list"
+        %li.Productpurchase__footer__nav__clearfix__list
+          =link_to "特定商取引に関する表記","#",class:"Productpurchase__footer__box__nav__clearfix__list" 
+      =link_to "#",class:"Productpurchase__footer__box__logo" do
+        =image_tag "logo.png",class: "Productpurchase__footer__box__logo--img"
+      %p
+        %small © Furima, Inc.
 

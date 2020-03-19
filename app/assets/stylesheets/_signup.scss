@@ -1,6 +1,28 @@
 .body {
-  height: 100vh;
+  height: 100%;
   background-color: #EEEEEE;
+
+  .Productpurchase__header{
+    width: 100%;
+    height: 130px;
+    background-color: #EEEEEE;
+    text-align: center;
+    display: block;
+    &__logo {
+      margin: 40px 0 0;
+      display: inline-block;
+      justify-content: center;
+      &--link {
+        width: 185px;
+        height: 49px;
+        line-height: 49px;
+        &--img {
+          width: 185px;
+          height: 49px;
+        }
+      }
+    }
+  }
 
   .user-main {
     height: 100%;
@@ -23,7 +45,7 @@
       margin: auto;
 
       .field {
-        padding-top: 35px;
+        padding-top: 50px;
         margin: auto;
 
         input {
@@ -56,8 +78,9 @@
       }
     }
     .actions {
-      width: 50%;
+      width: 33%;
       margin: auto;
+      padding-bottom: 50px;
 
       input {
         height: 50px;
@@ -66,6 +89,40 @@
         color: white;
         background-color: #DD0000;
         border-style:none;
+      }
+    }
+  }
+
+  .Productpurchase__footer {
+    background-color: #EEEEEE;
+    &__box {
+      height: 200px;
+      margin: 0 auto;
+      bottom: 0;
+      padding: 40px 0;
+      text-align: center;
+      width: calc(100% - 50%);
+      &__nav {
+        width: 100%;
+        &__clearfix {
+          display: flex;
+          justify-content: space-around;
+          &__list {
+            text-decoration: none;
+            display: block;
+            color: #333;
+            font-size: 14px;
+          }
+        }
+      }
+      &__logo {
+        width: 120px;
+        height: 65px;
+        margin: 40px auto 0;
+        display: block;
+        &--img {
+          height: 60px;
+        }
       }
     }
   }
