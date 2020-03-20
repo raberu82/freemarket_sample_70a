@@ -1,2 +1,23 @@
-%h1 Purchase#done
-%p Find me in app/views/purchase/done.html.haml
+%header.Productpurchase__header
+  .Productpurchase__header__logo
+    =link_to "/",class:"Productpurchase__header__logo--link" do
+      =image_tag "logo.png",class: "Productpurchase__header__logo--link--img"
+%main.Productpurchase__main
+  %section.Productpurchase__main__box
+    %h2.Productpurchase__main__box__title
+      購入が完了しました
+    %section.Productpurchase__main__box__item
+      .Productpurchase__main__box__item__details
+        .Productpurchase__main__box__item__details__box
+          %h3.buy-item-image
+            = image_tag "#{@image.item_image}", height: "64px" , width: "64px"
+          .buy-item-detail
+            .buy-item-name
+              = @item.name
+            %p.buy-price-ja.bold
+              %span ¥
+              = @item.price.to_s(:delimited)
+              %span.item-shipping-fee （税込）送料込み
+            =link_to "/",class:"Productpurchase__header__logo--link" do
+              %button.new__comment__Btn{name: "button", type: "submit"}トップページへ戻る
+= render "shared/footer"

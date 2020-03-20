@@ -1,0 +1,60 @@
+%header.Productpurchase__header
+  .Productpurchase__header__logo
+    =link_to "/",class:"Productpurchase__header__logo--link" do
+      =image_tag "logo.png",class: "Productpurchase__header__logo--link--img"
+%main.Productpurchase__main
+  %section.Productpurchase__main__box
+    %h2.Productpurchase__main__box__title
+      購入内容の確認
+    %section.Productpurchase__main__box__item
+      .Productpurchase__main__box__item__details
+        .Productpurchase__main__box__item__details__box
+          %h3.buy-item-image
+            = image_tag "#{@image.item_image}", height: "64px" , width: "64px"
+          .buy-item-detail
+            .buy-item-name
+              = @item.name
+            %p.buy-price-ja.bold
+              %span ¥
+              = @item.price.to_s(:delimited)
+              %span.item-shipping-fee （税込）送料込み
+    %section.Productpurchase__main__box__pay
+      .Productpurchase__main__box__pay__contents
+        .buy-form
+          %ul.buy-form__price
+            %li.buy-form__price__table
+              .buy-form__price__table__head 支払い金額
+              .buy-form__price__table__cell
+                %span ¥
+                = @item.price.to_s(:delimited)
+                %span -
+          %ul.buy-form__point
+            %li.buy-form__point__teble
+              .buy-form__point__teble__use
+                %i.fas.fa-square
+                %label.buy-form__point__teble__use--label ポイントを使用 (所持ポイント: P0)
+          %section.buy-form__pay
+            .buy-form__pay__method
+              %h3.buy-form__pay__method__head 支払い方法
+              - if @default_card_information.blank?
+                %br /
+              - else
+                -#以下カード情報を表示
+                = "**** **** **** " + @default_card_information.last4
+                - exp_month = @default_card_information.exp_month.to_s
+                - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                = exp_month + " / " + exp_year
+              %br
+          %section.buy-form__delivery
+            .buy-form__delivery__method
+              %h3.buy-form__delivery__method__head 配送先
+              =link_to "#",class:"buy-form__delivery__method__link" do
+                %p.buy-form__delivery__method__link__text
+                  %i.fas.fa-plus-circle
+                  %span.buy-register-text 登録してください
+          %section.buy-form__purchace
+          = form_tag(action: :pay, method: :post) do
+            %button.buy-form__purchace__btn{type: "submit"} 購入する
+            %input#user_info_is_not_complete{type: "hidden"}/
+= render "shared/footer"
+

@@ -60,7 +60,7 @@
               = link_to '商品の削除',"/", method: :delete, class: "item__buy__btn"
           - elsif @item.buyer_id.nil? 
             .item__buy
-              = link_to '購入画面へ進む', "/", class: "item__buy__btn"
+              = link_to '購入画面へ進む', purchase_path(@item.id), class: "item__buy__btn"
           .itembox--text
             = @item.explanation
           .itembox--table
