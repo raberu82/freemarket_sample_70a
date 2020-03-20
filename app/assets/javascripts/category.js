@@ -49,6 +49,7 @@ $(function(){
         children.forEach(function(child){  
         // forEachでchildに一つずつデータを代入｡子のoptionが一つずつ作成される｡
           insertHTML += appendOption(child);  
+          console.log(child)
         });
         
         appendChidrenBox(insertHTML); 

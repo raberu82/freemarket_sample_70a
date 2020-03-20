@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   
   resources :posts do
     collection do
-      get 'category_children'
-      get 'category_grandchildren'
+      get 'category_children', defaults: { format: 'json' }
+      get 'category_grandchildren', defaults: { format: 'json' }
     end
   end
   
