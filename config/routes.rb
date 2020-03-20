@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   end
   resources :purchase, only: [:show] do
     member do
-      get 'show', to: 'purchase#show'
       post 'pay', to: 'purchase#pay'
       get 'done', to: 'purchase#done'
     end

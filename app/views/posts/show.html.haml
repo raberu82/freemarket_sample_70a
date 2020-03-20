@@ -57,7 +57,7 @@
             .item__buy
               = link_to '商品の編集', edit_post_path, class: "item__buy__btn"
             .item__delete
-              = link_to '商品の削除',"/", method: :delete, class: "item__buy__btn"
+              = link_to '商品の削除',post_path(@item.id), method: :delete, class: "item__buy__btn"
           - elsif @item.buyer_id.nil? 
             .item__buy
               = link_to '購入画面へ進む', purchase_path(@item.id), class: "item__buy__btn"

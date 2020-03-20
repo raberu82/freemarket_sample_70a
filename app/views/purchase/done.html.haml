@@ -18,6 +18,6 @@
               %span ¥
               = @item.price.to_s(:delimited)
               %span.item-shipping-fee （税込）送料込み
-            =link_to "/",class:"Productpurchase__header__logo--link" do
+            =link_to root_path,class:"Productpurchase__header__logo--link" do
               %button.new__comment__Btn{name: "button", type: "submit"}トップページへ戻る
 = render "shared/footer"
