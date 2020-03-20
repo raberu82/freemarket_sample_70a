@@ -61,18 +61,7 @@
                 = link_to '商品の削除', post_path(@item.id), class: "item__delete__btn",method: :delete
             - elsif @item.buyer_id.nil? 
               .item__buy
-                = link_to '購入画面へ進む', "", class: "item__buy__btn" 
-          - elsif @item.buyer_id.present? 
-            .item__sold
-              売り切れました
-          - else 
-            .item__buy
-              = link_to '商品の編集', edit_post_path, class: "item__buy__btn"
-            .item__delete
-              = link_to '商品の削除',post_path(@item.id), method: :delete, class: "item__buy__btn"
-          - elsif @item.buyer_id.nil? 
-            .item__buy
-              = link_to '購入画面へ進む', purchase_path(@item.id), class: "item__buy__btn"
+                = link_to '購入画面へ進む', purchase_path , class: "item__buy__btn" 
           .itembox--text
             = @item.explanation
           .itembox--table

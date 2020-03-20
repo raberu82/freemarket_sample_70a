@@ -33,8 +33,7 @@ class PurchaseController < ApplicationController
   end
 
   def done
-    @item_buyer = Item.find(params[:id])
-    @item_buyer.update( buyer_id: current_user.id)
+    @item.update( buyer_id: current_user.id)
     @images = @item.item_images
     @image = @images.first
   end

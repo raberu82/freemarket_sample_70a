@@ -30,7 +30,6 @@ class PostsController < ApplicationController
     @user = @item.user
     @images = @item.item_images
     @image = @images.first
-    
   end
 
   def edit
