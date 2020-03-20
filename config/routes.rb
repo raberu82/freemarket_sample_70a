@@ -6,14 +6,22 @@ Rails.application.routes.draw do
   }
   devise_scope :user do
     get 'addresses', to: 'users/registrations#new_address'
-    post 'addresses', to: 'users/registrations#create_address'
+    # post 'addresses', to: 'users/registrations#create_address'
+    get 'profile', to: 'users/registrations#new_profile'
+    # post 'profile', to: 'users/registrations#create_profile'
   end
   
   get 'card/new'
   get 'card/show'
 
   
-  resources :posts
+  resources :posts do
+    collection do
+      get 'category_children'
+      get 'category_grandchildren'
+    end
+  end
+  
   resources :users, only: [:index, :show]
   resources :logouts, only: [:index, :destroy]
   resources :card, only: [:index, :new, :show] do
