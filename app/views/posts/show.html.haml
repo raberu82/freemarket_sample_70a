@@ -80,17 +80,17 @@
                 %tr
                   %th.line--Categories カテゴリー
                   %td.line--CategoriesName
-                    - if @item.category_id != 0
-                      = link_to "#",class: "line--CategoriesName__link" do
-                        = @item.category.parent.parent.name
-                        %br
-                        >
-                        = @item.category.parent.name
-                        %br
-                        >
-                        = @item.category.name
-                    - else 
-                      カテゴリ未登録
+                    -# - if @item.category_id != 0
+                    -#   = link_to "#",class: "line--CategoriesName__link" do
+                    -#     = @item.category.parent.parent.name
+                    -#     %br
+                    -#     >
+                    -#     = @item.category.parent.name
+                    -#     %br
+                    -#     >
+                    -#     = @item.category.name
+                    -# - else 
+                    -#   カテゴリ未登録
                     =link_to "ベビー・キッズ","#",class: "line--CategoriesName__link"
                     %br/
                     =link_to "ベビー服(男女兼用)  ~95cm","#",class: "line--CategoriesName__link"
