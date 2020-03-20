@@ -1,13 +1,14 @@
 class PostsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_user
+  
   def index
-    @items = Item.order("created_at DESC")
+    @items = Item.order("created_at DESC").limit(3)
   end
 
   def new
     @item = Item.new
     @item_image = @item.item_images.build
+    @category = Category.all.order("id ASC").limit(13)
   end
 
   def create
@@ -29,6 +30,7 @@ class PostsController < ApplicationController
     @user = @item.user
     @images = @item.item_images
     @image = @images.first
+    
   end
 
   def edit
@@ -40,9 +42,19 @@ class PostsController < ApplicationController
   end
 
   def update
+    if @item.update(item_params)
+      redirect_to root_path, notice: '商品情報を更新しました'
+    else
+      render :edit, notice: '商品の更新に失敗しました'
+    end
   end
 
   def destroy
+    if @item.destroy
+      redirect_to root_path, notice: '商品情報を削除しました'
+    else
+      render :edit, notice: '削除に失敗しました'
+    end
   end
 
   def ensure_correct_user
@@ -51,6 +63,16 @@ class PostsController < ApplicationController
       flash[:notice] = "権限がありません"
       redirect_to("/posts/index")
     end
+  end
+
+
+  def category_children  
+    @category_children = Category.find(params[:productcategory]).children 
+  end
+
+
+  def category_grandchildren
+    @category_grandchildren = Category.find(params[:productcategory]).children
   end
 
   private
@@ -63,7 +85,5 @@ class PostsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def set_current_user
-    @current_user = User.find_by(id: session[:user_id])
-  end
+  
 end

@@ -1,35 +1,40 @@
-.body
+.address-body
   %header.Productpurchase__header
     .Productpurchase__header__logo
       =link_to "/",class:"Productpurchase__header__logo--link" do
         =image_tag "logo.png",class: "Productpurchase__header__logo--link--img"
   .user-main
-    %h2 会員情報入力
-    = form_for(@user, url: addresses_path, method: :get) do |f|
-      = render "devise/shared/error_messages", resource: @user
+    %h2 プロフィール
+    = form_for @profile, url:  user_registration_path, method: :post do |f|
+      = render "devise/shared/error_messages", resource: @profile
       .main-center
         .field
-          = f.label :ニックネーム
+          = f.label :お名前（全角）
           %span 必須
           %br/
-          = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
+          .form-unity
+            = f.text_field :first_name, class: "form-conclusion", autofocus: true, autocomplete: "first_name"
+            = f.text_field :last_name, class: "form-conclusion", autofocus: true, autocomplete: "last_name"
         .field
-          = f.label :メールアドレス
+          = f.label :お名前カナ（全角）
           %span 必須
           %br/
-          = f.email_field :email, autofocus: true, autocomplete: "email"
+          .form-unity
+            = f.text_field :first_name_kana, class: "form-conclusion" ,autofocus: true, autocomplete: "first_name_kana"
+            = f.text_field :last_name_kana, class: "form-conclusion", autofocus: true, autocomplete: "last_name_kana"
         .field
-          = f.label :パスワード
+          = f.label :生年月日
           %span 必須
           %br/
-          = f.password_field :password, autocomplete: "new-password"
-        .field
-          = f.label :パスワード確認
-          %span 必須
-          %br/
-          = f.password_field :password_confirmation, autocomplete: "new-password"
-      .actions
-        = f.submit "次へ進む"
+          .form-unity
+            = f.text_field :birth_year, autofocus: true, autocomplete: "birth_year"
+            %h3 年
+            = f.text_field :birth_month, autofocus: true, autocomplete: "birth_month"
+            %h3 月
+            = f.text_field :birth_day	, autofocus: true, autocomplete: "birth_day	"
+            %h3 日
+        .actions
+          = f.submit "次へ進む"
   %footer.Productpurchase__footer
     .Productpurchase__footer__box
       %nav.Productpurchase__footerr__box__nav
@@ -44,4 +49,3 @@
         =image_tag "logo.png",class: "Productpurchase__footer__box__logo--img"
       %p
         %small © Furima, Inc.
-
