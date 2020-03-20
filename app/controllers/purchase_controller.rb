@@ -6,7 +6,7 @@ class PurchaseController < ApplicationController
   def show
     @images = @item.item_images
     @image = @images.first
-    card = Card.where(user_id: current_user.id).first
+    card = Card.find_by(user_id: current_user.id)
     
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if card.blank?
@@ -22,20 +22,23 @@ class PurchaseController < ApplicationController
   end
 
   def pay
-    card = Card.where(user_id: current_user.id).first
+    card = Card.find_by(user_id: current_user.id)
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
-      :amount => 13500, #支払金額を入力（itemテーブル等に紐づけても良い）
-      :customer => card.customer_id, #顧客ID
-      :currency => 'jpy', #日本円
+      amount: 13500, #支払金額を入力（itemテーブル等に紐づけても良い）
+      customer: card.customer_id, #顧客ID
+      currency: 'jpy', #日本円
     )
     redirect_to action: 'done' #完了画面に移動
   end
 
   def done
-    @item.update( buyer_id: current_user.id)
-    @images = @item.item_images
-    @image = @images.first
+    if @item.update( buyer_id: current_user.id)
+      @images = @item.item_images
+      @image = @images.first
+    else
+      redirect_to action: 'show'
+    end
   end
 
   private
