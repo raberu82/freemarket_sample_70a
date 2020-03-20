@@ -31,6 +31,11 @@ Rails.application.routes.draw do
       delete 'delete', to: 'card#delete'
     end
   end
-  
+  resources :purchase, only: [:show] do
+    member do
+      post 'pay', to: 'purchase#pay'
+      get 'done', to: 'purchase#done'
+    end
+  end
   root to: "posts#index"
 end
