@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root 'posts#index'
   resources :posts, only: [:index, :show, :new, :create] do
     collection do
-      get 'get_categorie_children', defaults: { format: 'json' }
-      get 'get_categorie_grandchildren', defaults: { format: 'json' }
+      get 'category_children', defaults: { format: 'json' }
+      get 'category_grandchildren', defaults: { format: 'json' }
     end
   end
 

@@ -14,7 +14,6 @@
           = f.fields_for :item_images do |i|
             = i.file_field :item_image, class:"exhibit-img__box___select"
 
-
       .exhibit-item
         .exhibit-item__ttl 
           %p.exhibit-item__ttl__text 商品名
@@ -31,19 +30,17 @@
         .exhibit-detail__category
           %p.exhibit-detail__category__text カテゴリ
           %p.exhibit-detail__category__tag 必須
-        .exhibit-detail__category-box
-          = f.fields_for :categories do |i|
-            = i.select :name, @categorie_parent_array, {}, {class:'exhibit-detail__category-box__select',id: 'parent_categorie'}
+        = f.collection_select :category, @category, :id, :name, { prompt: "---" }, {class:"exhibit-detail__category-box", id: "category_select" }
+        .product_select-children
         .exhibit-detail__brand
           %p.exhibit-detail__brand__text ブランド
           %p.exhibit-detail__brand__tag 任意
-        = f.fields_for :brands do |i|
-          = i.text_field :name, class: 'exhibit-detail__brand-box', placeholder: "例） シャネル"
+        = f.text_field :brand, class: 'exhibit-detail__brand-box', placeholder: "例） シャネル"
         .exhibit-detail__status
           %p.exhibit-detail__status__text 商品の状態
           %p.exhibit-detail__status__tag 必須
         .exhibit-detail__status-box
-          = f.collection_select :status, Status.all, :id, :name , class:"exhibit-detail__status" 
+          = f.collection_select :status, Status.all, :id, :name , {prompt: "---"},{class:"exhibit-detail__status-box" }
       
       .exhibit-delivery
         .exhibit-delivery__ttl 配送について
@@ -51,17 +48,17 @@
           %p.exhibit-delivery__payment__text 配送料の負担
           %p.exhibit-delivery__payment__tag 必須
         .exhibit-delivery__payment-box
-          = f.collection_select :postage, Postage.all, :id, :name ,class:"exhibit-delivery__payment-box"
+          = f.collection_select :postage, Postage.all, :id, :name , {prompt: "---"},{class:"exhibit-delivery__payment-box" }
         .exhibit-delivery__prefecture
           %p.exhibit-delivery__prefecture__text 配送元の地域
           %p.exhibit-delivery__prefecture__tag 必須
         .exhibit-delivery__prefecture-box
-          = f.collection_select :ship_form_address, Prefecture.all, :id, :name ,class:"exhibit-delivery__prefecture-box"
+          = f.collection_select :ship_form_address, Prefecture.all, :id, :name , {prompt: "---"},{class:"exhibit-delivery__prefecture-box" }
         .exhibit-delivery__days
           %p.exhibit-delivery__days__text 発送までの日数
           %p.exhibit-delivery__days__tag 必須
         .exhibit-delivery__days-box
-          = f.collection_select :shipping_days, Shipping.all, :id, :name ,class:"exhibit-delivery__days-box"
+          = f.collection_select :shipping_days, Shipping.all, :id, :name ,  {prompt: "---"},{class:"exhibit-delivery__days-box" }
           
       .exhibit-price
         .exhibit-price__info 価格(¥300〜9,999,999)

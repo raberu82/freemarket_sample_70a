@@ -5,13 +5,8 @@ class PostsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
-    @item.categorie.new
-    @item.brand.new
     @prefecture = Addresse.where('prefecture_id IN(?)', params[:prefecture_id])
-    @categorie_parent_array = ["---"]
-    Categorie.where(ancestry: nil).each do |f|
-    @categorie_parent_array << f.name
-    end
+    @category = Category.where(ancestry:nil).limit(13)
   end
   
   def show
@@ -26,10 +21,22 @@ class PostsController < ApplicationController
     end
   end
 
+
+
+  def category_children  
+    @category_children = Category.find(params[:productcategory]).children 
+  end
+
+
+  def category_grandchildren
+    @category_grandchildren = Category.find(params[:productcategory]).children
+  end
+
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :price, :explanation, :status, :postage, :ship_form_address, :shipping_days, :category, :brand, item_images_attributes: [:item_image,:id])
+  end
 end
 
-private
-
-def item_params
-  params.require(:item).permit(:name, :price, :explanation, :status, :postage, :ship_form_address, :shipping_days, item_images_attributes: [:item_image,:id], categorie_attributes: [:name],brand_attributes: [:name])
-end
