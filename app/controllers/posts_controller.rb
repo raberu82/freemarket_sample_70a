@@ -21,22 +21,18 @@ class PostsController < ApplicationController
     end
   end
 
-
-
   def category_children  
     @category_children = Category.find(params[:productcategory]).children 
   end
-
 
   def category_grandchildren
     @category_grandchildren = Category.find(params[:productcategory]).children
   end
 
-
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :explanation, :status, :postage, :ship_form_address, :shipping_days, :category, :brand, item_images_attributes: [:item_image,:id])
+    params.require(:item).permit(:name, :price, :explanation, :status, :postage, :ship_form_address, :shipping_days, :category_id, item_images_attributes: [:item_image,:id]).merge(users_id: '1' ,buyer_id: '1')
   end
 end
 

@@ -1,6 +1,5 @@
 class AddColumnItems < ActiveRecord::Migration[5.2]
   def change
-    add_column :items, :category, :integer ,foreign_key: true
-    add_column :items, :brand, :string
+    add_column :items, :category_id, :integer ,foreign_key: true
   end
 end
