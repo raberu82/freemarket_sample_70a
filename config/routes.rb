@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :destroy]
   resources :logouts, only: [:index]
   resources :card, only: [:index]
-  resources :cards, only: [:index]
   get 'purchase/index'
   get 'purchase/done'
   devise_for :users, controllers: {
