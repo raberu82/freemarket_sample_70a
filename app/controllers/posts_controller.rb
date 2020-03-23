@@ -10,21 +10,7 @@ class PostsController < ApplicationController
     @item.item_images.new
     @prefecture = Addresse.where('prefecture_id IN(?)', params[:prefecture_id])
     @category = Category.where(ancestry:nil).limit(13)
-  end
-
-  def create
-    @item = Item.new(item_params)
-    if @item.save
-
-      params[:item_images]['image'].each do |img|
-        @item_image = @item.item_images.create(:image => img, :item_id => @item.id)
-      end
-
-      redirect_to item_path(@item.id)
-    end
-  end
-
-  
+  end  
   
   def show
     @item = Item.find(params[:id])
@@ -87,7 +73,7 @@ class PostsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :explanation, :status, :postage, :ship_form_address, :shipping_days, :category_id, item_images_attributes: [:item_image,:id]).merge(users_id: '1' ,buyer_id: '1')
+    params.require(:item).permit(:name, :price, :explanation, :status, :brand, :postage, :ship_form_address, :shipping_days, :category_id,:item_image, item_images_attributes: [:item_image,:id]).merge(user_id: '1' ,buyer_id: '1')
   end
 
   def set_item

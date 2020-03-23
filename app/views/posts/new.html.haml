@@ -18,11 +18,11 @@
           .hidden-content
             = f.fields_for :item_images do |i|
               = i.file_field :item_image, class: "hidden-field"
-              %input{class:"hidden-field", type: "file", name: "item[images_attributes][0][image]", id: "item_images_attributes_0_image" }
-              %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image" }
-              %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
-              %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
-              %input{class:"hidden-field", type: "file", name: "item[images_attributes][4][image]", id: "item_images_attributes_4_image" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][0][item_image]", id: "item_images_attributes_0_image" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][item_image]", id: "item_images_attributes_1_image" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][item_image]", id: "item_images_attributes_2_image" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][item_image]", id: "item_images_attributes_3_image" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][item_image]", id: "item_images_attributes_4_image" }
 
       .exhibit-item
         .exhibit-item__ttl 
@@ -39,7 +39,7 @@
         .exhibit-detail__category
           %h3.exhibit-detail__category__text カテゴリ
           %span.exhibit-detail__category__tag 必須
-        = f.collection_select :category_id, @category, :id, :name, { prompt: "---" }, {class:"exhibit-detail__category-box", id: "category_select" }
+        = f.collection_select :category_id, Category.roots, :id, :name, { prompt: "---" }, {class:"exhibit-detail__category-box", id: "category_select" }
         .product_select-children
         .exhibit-detail__brand
           %h3.exhibit-detail__brand__text ブランド
