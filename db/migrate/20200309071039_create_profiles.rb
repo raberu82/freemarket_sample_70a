@@ -11,7 +11,6 @@ class CreateProfiles < ActiveRecord::Migration[5.2]
       t.string :birth_day,       null: false
       t.string :comment
       t.string :user_image
-
       t.timestamps
     end
   end

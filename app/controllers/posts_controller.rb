@@ -7,29 +7,25 @@ class PostsController < ApplicationController
 
   def new
     @item = Item.new
-    @item_image = @item.item_images.build
-    @category = Category.all.order("id ASC").limit(13)
-  end
-
-  def create
-    @item = Item.new(item_params)
-    if @item.save
-
-      params[:item_images]['image'].each do |img|
-        @item_image = @item.item_images.create(:image => img, :item_id => @item.id)
-      end
-
-      redirect_to item_path(@item.id)
-    end
-  end
-
-  
+    @item.item_images.new
+    @prefecture = Addresse.where('prefecture_id IN(?)', params[:prefecture_id])
+    @category = Category.where(ancestry:nil).limit(13)
+  end  
   
   def show
     @item = Item.find(params[:id])
     @user = @item.user
     @images = @item.item_images
     @image = @images.first
+  end
+
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -75,9 +71,9 @@ class PostsController < ApplicationController
   end
 
   private
+
   def item_params
-    params.require(:item).permit(item_images_attributes: [:id, :item_id, :item_image]).merge(user_id: current_user.id)
-    # :name, :discription, :price, :condition, :shipping_charge, :shipping_date, :prefecture
+    params.require(:item).permit(:name, :price, :explanation, :status, :brand, :postage, :ship_form_address, :shipping_days, :category_id,:item_image, item_images_attributes: [:item_image,:id]).merge(user_id: '1' ,buyer_id: '1')
   end
 
   def set_item
@@ -86,3 +82,4 @@ class PostsController < ApplicationController
 
   
 end
+
