@@ -11,11 +11,43 @@ Rails.application.routes.draw do
   resources :logouts, only: [:index]
   resources :card, only: [:index]
   resources :cards, only: [:index]
+  get 'purchase/index'
+  get 'purchase/done'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
   devise_scope :user do
-    get 'deliverys', to: 'users/registrations#new_deliverys'
-    post 'deliverys', to: 'users/registrations#create_deliverys'
+    get 'addresses', to: 'users/registrations#new_address'
+    # post 'addresses', to: 'users/registrations#create_address'
+    get 'profile', to: 'users/registrations#new_profile'
+    # post 'profile', to: 'users/registrations#create_profile'
   end
+  
+  get 'card/new'
+  get 'card/show'
+
+  
+  resources :posts do
+    collection do
+      get 'category_children'
+      get 'category_grandchildren'
+    end
+  end
+  
+  resources :users, only: [:index, :show]
+  resources :logouts, only: [:index, :destroy]
+  resources :card, only: [:index, :new, :show] do
+    collection do
+      post 'show', to: 'card#show'
+      post 'pay', to: 'card#pay'
+      delete 'delete', to: 'card#delete'
+    end
+  end
+  resources :purchase, only: [:show] do
+    member do
+      post 'pay', to: 'purchase#pay'
+      get 'done', to: 'purchase#done'
+    end
+  end
+  root to: "posts#index"
 end

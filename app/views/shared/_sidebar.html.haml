@@ -1,12 +1,63 @@
 .sidebar
   %nav.sidebar__nav
     %ul.sidebar__nav__list
-      %li.sidebar__nav__list__box
-        マイページ
-        %span >
-      %li.sidebar__nav__list__box
-        お支払い方法登録
-        %span >
-      %li.sidebar__nav__list__box
-        ログアウト
-        %span >
+      %li
+        =link_to users_path, class: 'sidebar__nav__list__box' do
+          マイページ
+          = icon('fas', 'chevron-right', class: "icon-a")
+      %li
+        =link_to card_new_path, class: 'sidebar__nav__list__box' do
+          お支払い方法登録
+          = icon('fas', 'chevron-right', class: "icon-a")
+      %li
+        =link_to "#", class: 'sidebar__nav__list__box' do
+          いいね！一覧
+          = icon('fas', 'chevron-right', class: "icon-a")
+      %li
+        =link_to "#", class: 'sidebar__nav__list__box' do
+          出品する
+          = icon('fas', 'chevron-right', class: "icon-a")
+      %li
+        =link_to "#", class: 'sidebar__nav__list__box' do
+          下書き一覧
+          = icon('fas', 'chevron-right', class: "icon-a")
+      %li
+        =link_to "#", class: 'sidebar__nav__list__box' do
+          出品した商品 - 出品中
+          = icon('fas', 'chevron-right', class: "icon-a")
+      %li
+        =link_to "#", class: 'sidebar__nav__list__box' do
+          出品した商品 - 取引中
+          = icon('fas', 'chevron-right', class: "icon-a")
+      %li
+        =link_to "#", class: 'sidebar__nav__list__box' do
+          出品した商品 - 売却済み
+          = icon('fas', 'chevron-right', class: "icon-a")
+      %li
+        =link_to "#", class: 'sidebar__nav__list__box' do
+          購入した商品 - 取引中
+          = icon('fas', 'chevron-right', class: "icon-a")
+      %li
+        =link_to "#", class: 'sidebar__nav__list__box' do
+          購入した商品 - 過去の取引
+          = icon('fas', 'chevron-right', class: "icon-a")
+      %li
+        =link_to "#", class: 'sidebar__nav__list__box' do
+          ニュース一覧
+          = icon('fas', 'chevron-right', class: "icon-a")
+      %li
+        =link_to "#", class: 'sidebar__nav__list__box' do
+          評価一覧
+          = icon('fas', 'chevron-right', class: "icon-a")
+      %li
+        =link_to "#", class: 'sidebar__nav__list__box' do
+          ガイド
+          = icon('fas', 'chevron-right', class: "icon-a")
+      %li
+        =link_to "#", class: 'sidebar__nav__list__box' do
+          お問い合わせ
+          = icon('fas', 'chevron-right', class: "icon-a")
+      %li
+        =link_to logouts_path, class: 'sidebar__nav__list__box' do
+          ログアウト
+          = icon('fas', 'chevron-right', class: "icon-a")

@@ -19,41 +19,72 @@
     %li.header__nav__lists__list
       %i.fa.fa-angle-right
     %li
-      %p.header__nav__lists__list product3
+      %p.header__nav__lists__list 
+        = @item.name
 -#  <商品詳細ページのmain>     
 .prodactdetails
   .prodactdetails__main
     .prodactdetails__main__contents
       .prodactdetails__main__contents__topcontent
         .prodactdetails__main__contents__topcontent__itembox
-          %h2.itembox--name product3
+          %h2.itembox--name 
+            = @item.name
           .itembox--body
             %ul.itembox--body__img
               %li.itembox--body__img__box
-                =image_tag "a007.png",class:"itembox--body__img__box__main"
+                =image_tag @image.item_image,class:"itembox--body__img__box__main"
                 %ul.itembox--body__img__box__lists
-                  %li.itembox--body__img__box__lists__list
-                    =image_tag "a007.png",class:"itembox--body__img__box__lists__list"
-                  %li.itembox--body__img__box__lists__list
-                    =image_tag "a003.png",class:"itembox--body__img__box__lists__list"
-                  %li.itembox--body__img__box__lists__list
-                    =image_tag "a001.png",class:"itembox--body__img__box__lists__list"
+                  - @images.each do |image|
+                    %li.itembox--body__img__box__lists__list
+                      = image_tag "#{image.item_image}", alt: "サムネイル", class: "itembox--body__img__box__lists__list"
+                -if @item.buyer_id.present? 
+                  .items-box_photo__sold
+                    .items-box_photo__sold__inner
+                      SOLD
+                      
           .itembox--price
-            %span.itembox--price__head ¥3,000,000,000-
+            %span.itembox--price__head 
+              = @item.price.to_s(:delimited)
+              円
             .itembox--price__details
               %span (税込)
-              %span 送料込み
+              %span 
+                = @item.postage
+          - if current_user.presence
+            - if @item.buyer_id.present? 
+              .item__sold
+                売り切れました
+            - elsif @item.user_id == current_user.id  
+              .item__buy
+                = link_to '商品の編集', edit_post_path, class: "item__buy__btn"
+              .item__delete
+                = link_to '商品の削除', post_path(@item.id), class: "item__delete__btn",method: :delete
+            - elsif @item.buyer_id.nil? 
+              .item__buy
+                = link_to '購入画面へ進む', purchase_path , class: "item__buy__btn" 
           .itembox--text
-            親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+            = @item.explanation
           .itembox--table
             %table.itembox--table__details
               %tbody.itembox--table__details__mass
                 %tr
                   %th.line--Seller 出品者
-                  %td.line--SellerName hoge
+                  %td.line--SellerName 
+                    = @user.nickname
                 %tr
                   %th.line--Categories カテゴリー
                   %td.line--CategoriesName
+                    -# - if @item.category_id != 0
+                    -#   = link_to "#",class: "line--CategoriesName__link" do
+                    -#     = @item.category.parent.parent.name
+                    -#     %br
+                    -#     >
+                    -#     = @item.category.parent.name
+                    -#     %br
+                    -#     >
+                    -#     = @item.category.name
+                    -# - else 
+                    -#   カテゴリ未登録
                     =link_to "ベビー・キッズ","#",class: "line--CategoriesName__link"
                     %br/
                     =link_to "ベビー服(男女兼用)  ~95cm","#",class: "line--CategoriesName__link"
@@ -67,18 +98,22 @@
                   %td.line--ProductSizeNumber
                 %tr
                   %th.line--ProductStatus 商品の状態
-                  %td.line--ProductStatusnow 未使用に近い
+                  %td.line--ProductStatusnow 
+                    = @item.status
                 %tr
                   %th.line--PostageBurden 配送料の負担
-                  %td.line--Postage 送料込み（出品者負担）
+                  %td.line--Postage 
+                    = @item.postage
                 %tr
                   %th.line--Shipping 発送元の地域
                   %td.line--Shippingarea
-                    =link_to "岩手県","#",class: "line--Shippingarea__link"
+                    =link_to @item.ship_form_address,"#",class: "line--Shippingarea__link"
                 %tr
                   %th.line--Date 発送日の目安
-                  %td.line--DatePeriod 4-7日で発送
-            
+                  %td.line--DatePeriod 
+                    = @item.shipping_days
+                    %span.product-fee_payer
+          
           .itembox--option
             %ul.itembox--option__btn
               %li.itembox--option__btn__like
@@ -120,7 +155,6 @@
       .prodactdetails__main__contents__relateditems
         =link_to "ベビー・キッズをもっと見る","#",class: "prodactdetails__main__contents__relateditems__link" 
         .productLists
-
 = render "aside"
 = render "shared/footer"
 = render "purchacebtn"
