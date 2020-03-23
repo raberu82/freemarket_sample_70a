@@ -14,9 +14,7 @@ Rails.application.routes.draw do
     get 'profile', to: 'users/registrations#new_profile'
     # post 'profile', to: 'users/registrations#create_profile'
   end
-  resources :users, only: [:index, :show, :destroy]
-  resources :logouts, only: [:index]
-  resources :card, only: [:index]
+  
   get 'purchase/index'
   get 'purchase/done'
   
