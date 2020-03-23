@@ -73,7 +73,7 @@ class PostsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :explanation, :status, :brand, :postage, :ship_form_address, :shipping_days, :category_id,:item_image, item_images_attributes: [:item_image,:id]).merge(user_id: '1' ,buyer_id: '1')
+    params.require(:item).permit(:name, :price, :explanation, :status, :brand, :postage, :ship_form_address, :shipping_days, :category_id,:item_image, item_images_attributes: [:item_image,:id]).merge(user_id: current_user.id)
   end
 
   def set_item
