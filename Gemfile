@@ -80,5 +80,6 @@ gem 'ancestry'
 gem 'payjp'
 gem 'dotenv'
 gem 'jquery-rails'
+gem 'fog-aws'
 # gem 'turbolinks', '~> 5'
 

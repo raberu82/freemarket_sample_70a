@@ -32,6 +32,14 @@ class ImagesUploader < CarrierWave::Uploader::Base
       name.downcase
     end
   end
+
+  if Rails.env.development?
+    storage :file
+  elsif Rails.env.test?
+    storage :file
+  else
+    storage :fog
+  end
   # Process files as they are uploaded:
   # process scale: [200, 300]
   #
