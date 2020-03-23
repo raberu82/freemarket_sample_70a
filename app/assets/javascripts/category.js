@@ -16,7 +16,7 @@ $(function(){
                         </div>
                         </div>`;
     $('.product_select-children').append(childSelectHtml);
-    console.log(childSelectHtml)
+    
   }
   function appendgrandChidrenBox(insertHTML){ // 孫セレクトボックスのhtml作成
     var grandchildrenSelectHtml = '';
@@ -45,10 +45,12 @@ $(function(){
         dataType: 'json'
       })
       .done(function(children){  // 送られてきたデータをchildrenに代入
+
         var insertHTML = '';
         children.forEach(function(child){  
         // forEachでchildに一つずつデータを代入｡子のoptionが一つずつ作成される｡
-          insertHTML += appendOption(child);  
+          insertHTML += appendOption(child); 
+          
         });
         
         appendChidrenBox(insertHTML); 
