@@ -1,17 +1,10 @@
 Rails.application.routes.draw do
-  root 'posts#index'
-  resources :posts, only: [:index, :show, :new, :create] do
-    collection do
-      get 'category_children', defaults: { format: 'json' }
-      get 'category_grandchildren', defaults: { format: 'json' }
-    end
-  end
-
-  resources :users, only: [:index, :show, :destroy]
-  resources :logouts, only: [:index]
-  resources :card, only: [:index]
-  get 'purchase/index'
-  get 'purchase/done'
+  # resources :posts, only: [:index, :show, :new, :create] do
+  #   collection do
+  #     get 'category_children', defaults: { format: 'json' }
+  #     get 'category_grandchildren', defaults: { format: 'json' }
+  #   end
+  # end
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -21,6 +14,12 @@ Rails.application.routes.draw do
     get 'profile', to: 'users/registrations#new_profile'
     # post 'profile', to: 'users/registrations#create_profile'
   end
+  resources :users, only: [:index, :show, :destroy]
+  resources :logouts, only: [:index]
+  resources :card, only: [:index]
+  get 'purchase/index'
+  get 'purchase/done'
+  
   
   get 'card/new'
   get 'card/show'

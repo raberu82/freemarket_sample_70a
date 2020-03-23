@@ -1,5 +1,3 @@
-user = User.new(nickname: 'hoge', email: 'hogehoge@hoge.com', password: 'hugahuga')
-user.save!
 # レディース
 lady = Category.create(name: "レディース")
 lady_1 = lady.children.create(name: "トップス")
