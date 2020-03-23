@@ -1,0 +1,26 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: "ニックネーム"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+        email: "メールアドレス"
+        nick_name: "ニックネーム"
+      address:
+        first_name: "名字(漢字)"
+        last_name: "名前(漢字)"
+        first_name_kana: "名字(カナ)"
+        last_name_kana: "名前(カナ)"
+        postcode: "郵便番号"
+        prefecture_id: "都道府県"
+        city: "市区町村"
+        block: "番地"
+      profile:
+        first_name: "名字(漢字)"
+        last_name: "名前(漢字)"
+        first_name_kana: "名字(カナ)"
+        last_name_kana: "名前(カナ)"
+        birth_year: "誕生年"
+        birth_month: "誕生月"
+        birth_day: "誕生日"

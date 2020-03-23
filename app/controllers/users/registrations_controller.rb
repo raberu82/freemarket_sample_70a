@@ -31,14 +31,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @profile = @user.build_profile
   end
 
-
   def create
     @user = User.new(session["devise.regist_data"]["user"])
     @address = Address.new(session["devise.regist_data"]["address"])
     @profile = Profile.new(plofile_params)
     unless @profile.valid?
       flash.now[:alert] = @profile.errors.full_messages
-      binding.pry
       render :new_profile and return
     end
     @user.build_address(@address.attributes)
@@ -47,7 +45,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     sign_in(:user, @user)
     redirect_to root_path
   end
-
 
   # GET /resource/edit
   # def edit
