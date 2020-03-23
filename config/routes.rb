@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  root 'posts#index'
+  resources :posts, only: [:index, :show, :new, :create] do
+    collection do
+      get 'category_children', defaults: { format: 'json' }
+      get 'category_grandchildren', defaults: { format: 'json' }
+    end
+  end
+
+  resources :users, only: [:index, :show, :destroy]
+  resources :logouts, only: [:index]
+  resources :card, only: [:index]
   get 'purchase/index'
   get 'purchase/done'
   devise_for :users, controllers: {

@@ -5,11 +5,12 @@
 @mixin exhibit-box {
   height: 48px;
   width: 100%;
-  padding: 0 16px;
-  margin: 16px 0px;
+  padding: 0px 16px;
+  margin: 10px 0px 16px 0px;
   color: #000;
   background-color: rgb(255, 255, 255);
   box-sizing: border-box;
+  
 }
 @mixin ttl-text {
   float: left;
@@ -29,7 +30,7 @@
 
 .exhibit-wrapper{
   position: relative;
-  height: 2300px;
+  height: 2400px;
   background-color:  rgb(245, 245, 245);
   font-size: 14px;
   .exhibit-header{
@@ -49,10 +50,8 @@
     width: 700px;
     margin: auto;
     margin-bottom: 100px;
-  }
     .exhibit-img{
       @include exhibit-content();
-      position: relative;
       &__ttl{
         &__text{
           @include ttl-text();
@@ -61,30 +60,85 @@
           @include ttl-tag();
         }
       }
-      &__info{
-        margin : 16px 0px;
-      }
-      &__box{
-        height: 30px;
-        background-color:olive;
-        &__select{
-          background-color: rgb(245, 245, 245);
-          height: 150px;
-          width: 100%;
-          border-width: 1px;
-          border-style: dashed;
-          border-color: rgb(204, 204, 204);
-          border-image: initial;
+      .post__drop__box__container{
+        display: block;
+        margin: 16px auto 0;
+        display: flex;
+        flex-wrap: wrap;
+        .prev-content {
+          display: flex;
+          .preview-box {
+            height: 162px;
+            width: 112px;
+            margin: 0 15px 10px 0;
+            .upper-box {
+              height: 112px;
+              width: 100%;
+              img{
+                width: 112px;
+                height: 112px;
+              }
+            }
+            .lower-box {
+              display: flex;
+              text-align: center;
+              .update-box {
+                color: #00b0ff;
+                width: 50%;
+                height: 50px;
+                line-height: 50px;
+                border: 1px solid #eee;
+                background: #f5f5f5;
+                cursor: pointer;
+              }
+              .delete-box {
+                color: #00b0ff;
+                width: 50%;
+                height: 50px;
+                line-height: 50px;
+                border: 1px solid #eee;
+                background: #f5f5f5;
+                cursor: pointer;
+              }
+            }
+          }
         }
-        &__icon{
-          position: absolute;
-          color:rgb(34, 34, 34);
-          font-size: 20px;
-          height: 24px;
-          margin-bottom: 8px;
-          width: 24px;
-          top: 160px;
-          left: 340px;
+        .label-content{
+          margin-bottom: 10px;
+          width: 620px;
+          height: 162px;
+          .label-box {
+            display: block;
+            border: 1px dashed #ccc;
+            position: relative;
+            background: #f5f5f5;
+            width: 100%;
+            height: 162px;
+            cursor: pointer;
+            &__text-visible {
+              position: absolute;
+              top: 50%;
+              left: 16px;
+              right: 16px;
+              text-align: center;
+              font-size: 14px;
+              line-height: 1.5;
+              font-weight: bold;
+              -webkit-transform: translate(0, -50%);
+              transform: translate(0, -50%);
+              pointer-events: none;
+              white-space: pre-wrap;
+              word-wrap: break-word;
+            }
+          }
+        }
+        .hidden-content {
+          .hidden-field {
+            display: none;
+          }
+          .hidden-checkbox {
+            display: none;
+          }
         }
       }
     }
@@ -110,9 +164,6 @@
         padding: 13px 16px;
         box-sizing: border-box;
       }
-      &__explanation-count{
-        float: right;
-      }
     }
     .exhibit-detail{
       @include exhibit-content();
@@ -130,6 +181,8 @@
       }
       &__category-box{
         @include exhibit-box();
+        width: 95%;
+        margin-left: 15px;
       }
       &__brand{
         &__text{
@@ -142,6 +195,8 @@
       }
       &__brand-box{
         @include exhibit-box();
+        width: 95%;
+        margin-left: 15px;
       }
       &__status{
         &__text{
@@ -175,9 +230,11 @@
       &__prefecture{
         &__text{
           @include ttl-text();
+          margin-top: 8px;
         }
         &__tag{
           @include ttl-tag();
+          margin-top: 8px;
         }
       }
       &__prefecture-box{
@@ -186,9 +243,11 @@
       &__days{
         &__text{
           @include ttl-text();
+          margin-top: 8px;
         }
         &__tag{
           @include ttl-tag();
+          margin-top: 8px;
         }
       }
       &__days-box{
@@ -204,7 +263,7 @@
       &__ttl{
         display: flex;
         justify-content: space-between;
-        &__a{
+        &__unit{
           width: 50%;
           &__text{
             @include ttl-text();
@@ -216,24 +275,13 @@
         &__ttl-box{
           @include exhibit-box();
           float: right;
-          height: 50px;
-          width: 30%;
+          width: 40%;
           border: solid 1px rgb(204, 204, 204);
         }
-      }
-      &__commission{
-        margin-top: 30px;
-      }
-      &__profit{
-        margin-top: 30px;
       }
       &__border{
         width: 100%;
         border-bottom: solid 1px rgb(204, 204, 204);
-        margin-top: 30px;
-      }
-      &__display{
-        float: right;
         margin-top: 30px;
       }
       .exhibit-submit-btn{
@@ -259,54 +307,6 @@
         margin-top: 30px;
         font-size: 12px;
       }
-    }
-  .footer {
-    padding-top: 60px;
-    color: #fff;
-    background-color: #272727;
-    text-align: center;
-    width: 100%;
-    height: 300px;
-    bottom: 0; 
-    &__contents{
-      max-width: 840px;
-      margin: 0 auto;
-      display: flex;
-      height: 170px;
-      &__content{
-        display: flex;
-        flex-direction: column;
-        width: calc(1 / 3 * 100%);
-        margin: 0 2% 0 0;
-        &__head{
-          margin: 0 0 20px;
-          font-size: 16px;
-          font-weight: bold;
-        }
-        &__main {
-          list-style: none;
-          text-decoration: none;
-          color:white;
-          &--list {
-            text-decoration: none;
-            color:white;
-            font-size: 12px;
-          }
-        }
-      }
-    }
-    &__logo{
-      max-width: 160px;
-      width: 100%;
-      margin: 0 auto;
-      height: 45px;
-      &--image {
-        width: 160px;
-        height: 45px;
-      }
-    }
-    &__text {
-      font-size: 14px;
     }
   }
 }

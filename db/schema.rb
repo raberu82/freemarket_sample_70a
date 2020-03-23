@@ -28,12 +28,6 @@ ActiveRecord::Schema.define(version: 2020_03_23_084239) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "customer_id", null: false
@@ -60,14 +54,16 @@ ActiveRecord::Schema.define(version: 2020_03_23_084239) do
     t.string "name", null: false
     t.integer "price", null: false
     t.integer "user_id", null: false
-    t.integer "buyer_id", comment: "2"
+    t.integer "buyer_id"
     t.text "explanation", null: false
     t.string "status", null: false
     t.string "postage", null: false
     t.integer "ship_form_address", null: false
     t.string "shipping_days", null: false
+    t.string "brand"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category_id"
     t.index ["name"], name: "index_items_on_name"
     t.index ["price"], name: "index_items_on_price"
   end

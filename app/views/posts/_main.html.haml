@@ -117,7 +117,7 @@
             .main__pickup__box__lists__list
               =link_to post_path(item),class: "main__pickup__box__lists__list__box" do
                 %figure.main__pickup__box__lists__list__box--image
-                  =image_tag img.item_image,class:"pickup__image"
+                  =image_tag img.item_image.url,class:"pickup__image"
                 .main__pickup__box__lists__list__box--text
                   %h3.main__pickup__box__lists__list__box--text--name 
                     = item.name
@@ -148,7 +148,7 @@
             .main__pickup__box__lists__list
               =link_to post_path(item),class: "main__pickup__box__lists__list__box" do
                 %figure.main__pickup__box__lists__list__box--image
-                  =image_tag img.item_image,class:"pickup__image"
+                  =image_tag img.item_image.url,class:"pickup__image"
                 .main__pickup__box__lists__list__box--text
                   %h3.main__pickup__box__lists__list__box--text--name 
                     = item.name
