@@ -40,6 +40,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capistrano'
+  gem 'web-console'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
@@ -80,8 +81,4 @@ gem 'ancestry'
 gem 'payjp'
 gem 'dotenv'
 gem 'jquery-rails'
-gem 'rspec-rails'
-
-group :development do
-  gem 'web-console'
-end
+gem 'rails-i18n'
