@@ -81,4 +81,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'payjp'
 gem 'dotenv'
+gem 'fog-aws'
+# gem 'turbolinks', '~> 5'
+
 gem 'rails-i18n'
