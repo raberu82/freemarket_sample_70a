@@ -95,6 +95,8 @@
                   justify-content: center;
                   &__list {
                     object-fit: contain;
+                    height: 100px;
+                    width: 100px;
                     margin-right: 10px;
                   }
                 }
