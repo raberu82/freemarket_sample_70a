@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
-    @prefecture = Addresse.where('prefecture_id IN(?)', params[:prefecture_id])
+    @prefecture = Addresse.where('prefecture_id IN(?)', params[:status_id])
     @category = Category.where(ancestry:nil).limit(13)
   end  
   
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
+    if @item.update(item_update_params)
       redirect_to root_path, notice: '商品情報を更新しました'
     else
       render :edit, notice: '商品の更新に失敗しました'
@@ -73,7 +73,11 @@ class PostsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :explanation, :status, :brand, :postage, :ship_form_address, :shipping_days, :category_id,:item_image, item_images_attributes: [:item_image,:id]).merge(user_id: '1' ,buyer_id: '1')
+    params.require(:item).permit(:name, :price, :explanation, :status, :brand, :postage, :ship_form_address, :shipping_days, :category_id,:item_image, item_images_attributes: [:item_image]).merge(user_id: current_user.id)
+  end
+
+  def item_update_params
+    params.require(:item).permit(:name, :price, :explanation, :status, :brand, :postage, :ship_form_address, :shipping_days, :category_id,:item_image, item_images_attributes: [:item_image,:id,:_destroy]).merge(user_id: current_user.id)
   end
 
   def set_item
