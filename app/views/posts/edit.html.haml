@@ -29,11 +29,6 @@
           .hidden-content
             = f.fields_for :item_images do |i|
               = i.file_field :item_image, class: "hidden-field"
-              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][0][item_image]", id: "item_images_attributes_0_image" }
-              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][item_image]", id: "item_images_attributes_1_image" }
-              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][item_image]", id: "item_images_attributes_2_image" }
-              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][item_image]", id: "item_images_attributes_3_image" }
-              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][item_image]", id: "item_images_attributes_4_image" }
               = i.check_box :_destroy, class: "hidden-checkbox"
             - @item.item_images.length.upto(4) do |i|
               %input{name: "item[item_images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}

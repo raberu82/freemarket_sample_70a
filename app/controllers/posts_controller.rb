@@ -29,6 +29,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @category = Category.where(ancestry:nil).limit(13)
     if @item.present?
       render :edit
     else

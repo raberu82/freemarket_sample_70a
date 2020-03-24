@@ -16,21 +16,21 @@ $(function(){
     console.log(html)
     return html;
   }
-  // if (window.location.href.match(/\/items\/\d+\/edit/)){
-  //   var prevContent = $('.label-content').prev();
-  //   labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
-  //   $('.label-content').css('width', labelWidth);
-  //   $('.preview-box').each(function(index, box){
-  //     $(box).attr('id', `preview-box__${index}`);
-  //   })
-  //   $('.delete-box').each(function(index, box){
-  //     $(box).attr('id', `delete_btn_${index}`);
-  //   })
-  //   var count = $('.preview-box').length;
-  //   if (count == 5) {
-  //     $('.label-content').hide();
-  //   }
-  // }
+  if (window.location.href.match(/\/items\/\d+\/edit/)){
+    var prevContent = $('.label-content').prev();
+    labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
+    $('.label-content').css('width', labelWidth);
+    $('.preview-box').each(function(index, box){
+      $(box).attr('id', `preview-box__${index}`);
+    })
+    $('.delete-box').each(function(index, box){
+      $(box).attr('id', `delete_btn_${index}`);
+    })
+    var count = $('.preview-box').length;
+    if (count == 5) {
+      $('.label-content').hide();
+    }
+  }
 
   function setLabel() {
     var prevContent = $('.label-content').prev();
@@ -74,7 +74,8 @@ $(function(){
     var count = $('.preview-box').length;
     setLabel(count);
     var id = $(this).data('id')
-    console.log(this)
+    $(`#preview-box__${id}`).remove();
+    var id = $(this).attr('id').replace(/[^0-9]/g, '');
     $(`#preview-box__${id}`).remove();
     if ($(`#item_images_attributes_${id}__destroy`).length == 0) {
       //フォームの中身を削除 
