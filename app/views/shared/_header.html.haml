@@ -8,7 +8,6 @@
         = form_with url: search_posts_path, local: true, method: :get, class:"header__box__main__searchbox__form" do |f|
           = f.text_field :keyword, id:'searchInput', class:'header__box__main__searchbox__form--input', name:'key' ,placeholder: "キーワードから探す"
           = f.submit "", class:"header__box__main__searchbox__form__submit"
-          =image_tag "icon-search 1.png",class:"header__box__main__searchbox__form__submit--icon"
     .header__box__nav
       %ul.header__box__nav__listleft
         %li=link_to "カテゴリー" , "" , class:"header__box__nav__listleft__categories" 
