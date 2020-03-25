@@ -50,10 +50,15 @@
             width: 40px;
             padding: 7px;
             background-color: #3CCACE;
-            &--icon {
-              height: 25px;
-              width: 25px;
-            }
+            cursor: pointer;
+          }
+          &__submit--icon {
+            height: 25px;
+            width: 25px;
+            position: relative;
+            top: 8px;
+            left: -30px;
+            
           }
         }
       }
@@ -606,4 +611,3 @@
     height: 54px;
   }
 }
-

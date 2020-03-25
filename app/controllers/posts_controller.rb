@@ -51,6 +51,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def search
+    @items = Item.search(params[:key]).limit(3)
+  end
+
   def ensure_correct_user
     @item = Item.find_by(id:params[:id])
     if @item.user_id != @current_user.id
@@ -78,7 +82,6 @@ class PostsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
   
 end
 
