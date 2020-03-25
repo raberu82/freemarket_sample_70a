@@ -1,108 +1,101 @@
 .exhibit-wrapper
-  .exhibit-header
-    =image_tag "logo.png",class:"exhibit-header__rogo"
+  = form_with model:@item, url:"/posts/#{@item.id}"  , local: true do |f|
+    .exhibit-header
+      = link_to root_path, class: "exhibit-header__rogo" do
+        = image_tag "logo.png",class:"exhibit-header__rogo"
 
-  .exhibit-container
-    .exhibit-img
-      .exhibit-img__ttl
-        .exhibit-img__ttl__text 出品画像
-        .exhibit-img__ttl__tag 必須
-      .exhibit-img__info 最大10枚までアップロードできます
-      %label.exhibit-img__box
-        #previews
-          - @item.item_images.each_with_index do |img, i|
-            - if img.item_image.present?
-              .label
-                = image_tag img.item_image, width: "114px", height: "72px", id: "#{i}"
-                .js
-                  %a.js-edit 編集
-                  %a.js-remove2 削除
-        %input.exhibit-img__box__select{name:"utf8",type:"file",alt:"テスト", placeholder:"ドラッグアンドドロップまたは%brクリックしてファイルをアップロード"}
-        .exhibit-img__box__icon
-          = icon('fas', 'camera')
+    .exhibit-container
+      .exhibit-img
+        .exhibit-img__ttl
+          %h3.exhibit-img__ttl__text 出品画像
+          %span.exhibit-img__ttl__tag 必須
+          %p.exhibit-img__info 最大5枚までアップロードできます
+        .post__drop__box__container
+          .prev-content   
+            - @item.item_images.each_with_index do |img,i|
+              - if img.item_image.url.present?
+                .preview-box{id: "preview-box__#{i}"}
+                  .upper-box
+                    = image_tag img.item_image.url, width: "112", height: "112", alt: "preview", data: { index: i }
+                  .lower-box
+                    -# .update-box
+                    -#   %label.edit-btn 編集
+                    .delete-box{"data-id" => i}
+                      .delete-btn
+                        %span 削除
+          .label-content
+            = f.label :"images_attributes_#{@item.item_images.length}_image", class: "label-box", id: "label-box--#{@item.item_images.length}" do
+              %pre.label-box__text-visible クリックしてファイルをアップロード
+          .hidden-content
+            = f.fields_for :item_images do |i|
+              = i.file_field :item_image, class: "hidden-field"
+              = i.check_box :_destroy, class: "hidden-field", id: "item_images_attributes_#{i.index}__destroy"
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][0][item_image]", id: "item_images_attributes_0_image" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][item_image]", id: "item_images_attributes_1_image" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][item_image]", id: "item_images_attributes_2_image" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][item_image]", id: "item_images_attributes_3_image" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][item_image]", id: "item_images_attributes_4_image" }
+            - @item.item_images.length.upto(4) do |i|
+              %input{name: "item[item_images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
 
-    .exhibit-item
-      .exhibit-item__ttl 
-        %p.exhibit-item__ttl__text 商品名
-        %p.exhibit-item__ttl__tag 必須
-      %input.exhibit-item__name-box{placeholder:"40文字まで"}
-      .exhibit-item__explanation
-        %p.exhibit-item__ttl__text 商品の説明
-        %p.exhibit-item__ttl__tag 必須
-      %input.exhibit-item__explanation-box{placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）                            例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
-      .exhibit-item__explanation-count 1/1000
+      .exhibit-item
+        .exhibit-item__ttl 
+          %h3.exhibit-item__ttl__text 商品名
+          %span.exhibit-item__ttl__tag 必須
+        = f.text_field :name, class: 'exhibit-item__name-box', placeholder: "商品名（必須 40文字まで)"
+        .exhibit-item__explanation
+          %p.exhibit-item__ttl__text 商品の説明
+          %p.exhibit-item__ttl__tag 必須
+        = f.text_area :explanation, class: 'exhibit-item__explanation-box', placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
 
-    .exhibit-detail
-      .exhibit-detail__ttl 商品の詳細
-      .exhibit-detail__category
-        %p.exhibit-detail__category__text カテゴリ
-        %p.exhibit-detail__category__tag 必須
-      %select.exhibit-detail__category-box
-      .exhibit-detail__brand
-        %p.exhibit-detail__brand__text ブランド
-        %p.exhibit-detail__brand__tag 任意
-      %input.exhibit-detail__brand-box{placeholder:"例） シャネル"}
-      .exhibit-detail__status
-        %p.exhibit-detail__status__text 商品の状態
-        %p.exhibit-detail__status__tag 必須
-      %select.exhibit-detail__status-box
-    
-    .exhibit-delivery
-      .exhibit-delivery__ttl 配送について
-      .exhibit-delivery__payment
-        %p.exhibit-delivery__payment__text 配送料の負担
-        %p.exhibit-delivery__payment__tag 必須
-      %select.exhibit-delivery__payment-box
-      .exhibit-delivery__prefecture
-        %p.exhibit-delivery__prefecture__text 配送元の地域
-        %p.exhibit-delivery__prefecture__tag 必須
-      %select.exhibit-delivery__prefecture-box 選択してください
-      .exhibit-delivery__days
-        %p.exhibit-delivery__days__text 発送までの日数
-        %p.exhibit-delivery__days__tag 必須
-      %select.exhibit-delivery__days-box 選択してください
-        
-    .exhibit-price
-      .exhibit-price__info 価格(¥300〜9,999,999)
-      .exhibit-price__ttl 
-        .exhibit-price__ttl__a
-          .exhibit-price__ttl__a__text 販売価格
-          .exhibit-price__ttl__a__tag 必須
-        .exhibit-price__ttl-box
-          %a.exhibit-price__ttl-box ¥
-          %input.exhibit-price__ttl-box{placeholder:" 0"}
-      .exhibit-price__display ー
-      .exhibit-price__commission 販売手数料（10%）
-      .exhibit-price__border
-      .exhibit-price__display ー
-      .exhibit-price__profit 販売利益
-      %input.exhibit-submit-btn{value:"出品する",type:"submit"}
-      %input.exhibit-back-btn{value:"戻る",type:"submit"}
-      .exhibit-txt 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。     また、出品をもちまして加盟店規約に同意したことになります。
-  
-  .footer
-    %ul.footer__contents
-      %li.footer__contents__content
-        %h2.footer__contents__content__head
-          FURIMAについて
-        %ul.footer__contents__content__main
-          %li=link_to "プライバシーポリシー", "#",class: "footer__contents__content__main--list" 
-          %li=link_to "FURIMA利用規約", "#",class: "footer__contents__content__main--list"
-          %li=link_to "ポイントに関する規約", "#" ,class: "footer__contents__content__main--list"
-      %li.footer__contents__content
-        %h2.footer__contents__content__head
-          FURIMAを見る
-        %ul.content__contents__main
-          %li=link_to "カテゴリー一覧", "#",class: "footer__contents__content__main--list"
-          %li=link_to "ブランド一覧", "#",class: "footer__contents__content__main--list"
-      %li.footer__contents__content
-        %h2.footer__contents__content__head
-          ヘルプ＆ガイド
-        %ul.footer__contents__content__main
-          %li=link_to "FURIMAガイド", "#",class: "footer__contents__content__main--list"
-          %li=link_to "FURIMAロゴ利用ガイドライン", "#",class: "footer__contents__content__main--list"
-          %li=link_to "お知らせ", "#" ,class: "footer__contents__content__main--list"
-    .footer__logo
-      =image_tag "logo-white.png",class:"footer__logo--image"
-    %p.footer__text
-      © FURIMA
+      .exhibit-detail
+        .exhibit-detail__ttl 商品の詳細
+        .exhibit-detail__category
+          %h3.exhibit-detail__category__text カテゴリ
+          %span.exhibit-detail__category__tag 必須
+        = f.collection_select :category_id, Category.roots, :id, :name,{prompt: "選択してください", selected: @selected_category.id}, {class: "exhibit-detail__category-box", id: "category_select", required: true}
+        .product_select-children
+        .exhibit-detail__brand
+          %h3.exhibit-detail__brand__text ブランド
+          %span.exhibit-detail__brand__tag 任意
+        = f.text_field :brand, class: 'exhibit-detail__brand-box', placeholder: "例） シャネル"
+        .exhibit-detail__status
+          %h3.exhibit-detail__status__text 商品の状態
+          %span.exhibit-detail__status__tag 必須
+        .exhibit-detail__status-box
+          = f.collection_select :status_id, Status.all, :id, :name , {prompt: "---"},{class:"exhibit-detail__status-box" }
+      
+      .exhibit-delivery
+        .exhibit-delivery__ttl 配送について
+        .exhibit-delivery__payment
+          %h3.exhibit-delivery__payment__text 配送料の負担
+          %span.exhibit-delivery__payment__tag 必須
+        .exhibit-delivery__payment-box
+          = f.collection_select :postage_id, Postage.all, :id, :name , {prompt: "---"},{class:"exhibit-delivery__payment-box" }
+        .exhibit-delivery__prefecture
+          %h3.exhibit-delivery__prefecture__text 配送元の地域
+          %span.exhibit-delivery__prefecture__tag 必須
+        .exhibit-delivery__prefecture-box
+          = f.collection_select :ship_form_address_id, ShipFormAddress.all, :id, :name , {prompt: "---"},{class:"exhibit-delivery__prefecture-box" }
+        .exhibit-delivery__days
+          %h3.exhibit-delivery__days__text 発送までの日数
+          %span.exhibit-delivery__days__tag 必須
+        .exhibit-delivery__days-box
+          = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name ,  {prompt: "---"},{class:"exhibit-delivery__days-box" }
+          
+      .exhibit-price
+        .exhibit-price__info 価格(¥300〜9,999,999)
+        .exhibit-price__ttl 
+          .exhibit-price__ttl__unit
+            .exhibit-price__ttl__unit__text 販売価格
+            .exhibit-price__ttl__unit__tag 必須
+          .exhibit-price__ttl-box
+            %a.exhibit-price__ttl-box ¥
+            = f.text_field :price, class: 'exhibit-detail__ttl-box', placeholder: "0", style: "height:45px;"
+        .exhibit-price__border
+        = f.submit "編集する", class: "exhibit-submit-btn"
+        %input.exhibit-back-btn{value:"戻る", type:"button", onclick:"history.back()"}
+        .exhibit-txt 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして加盟店規約に同意したことになります。
+  = render "shared/footer"
+
+

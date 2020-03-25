@@ -1,6 +1,4 @@
 class Address < ApplicationRecord
-  belongs_to :user, optional: true
-
   # 全角ひらがなカタカナ漢字
   VALID_NAME_REGEX = /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/
   # 全角カタカナ

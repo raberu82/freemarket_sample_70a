@@ -28,6 +28,8 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @selected_category = Category.find(@item.category_id)
+    @category = Category.where(ancestry:nil).limit(13)
     if @item.present?
       render :edit
     else
@@ -36,8 +38,8 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
-      redirect_to root_path, notice: '商品情報を更新しました'
+    if @item.update(item_update_params)
+      redirect_to post_path, notice: '商品情報を更新しました'
     else
       render :edit, notice: '商品の更新に失敗しました'
     end
@@ -76,7 +78,13 @@ class PostsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :explanation, :status_id, :brand, :postage_id, :ship_form_address_id, :shipping_days_id, :category_id,:item_image, item_images_attributes: [:item_image,:id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price, :explanation, :status, :brand, :postage, :ship_form_address, :shipping_days, 
+    :category_id,:item_image, item_images_attributes: [:item_image]).merge(user_id: current_user.id)
+  end
+
+  def item_update_params
+    params.require(:item).permit(:name, :price, :explanation, :status, :brand, :postage, :ship_form_address, :shipping_days, 
+    :category_id,:item_image, item_images_attributes: [:item_image,:id,:_destroy]).merge(user_id: current_user.id)
   end
 
   def set_item
