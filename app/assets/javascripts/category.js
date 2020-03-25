@@ -39,7 +39,7 @@ $(function(){
     if (productcategory != ''){
  // ↑ productcategoryが空ではない場合のみAjax通信を行う｡選択肢を初期選択肢'---'に変えると､通信失敗となってしまうため｡
       $.ajax({
-        url: 'category_children',
+        url: '/posts/category_children',
         type: 'GET',
         data: { productcategory: productcategory },
         dataType: 'json'
@@ -72,7 +72,7 @@ $(function(){
     var productcategory = document.getElementById('child_category').value;
     if (productcategory != ''){
     $.ajax ({
-      url: 'category_grandchildren',
+      url: '/posts/category_grandchildren',
       type: 'GET',
       data: { productcategory: productcategory },
       dataType: 'json'

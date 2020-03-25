@@ -8,12 +8,11 @@ $(function(){
                     <div class="update-box">
                       <label class="edit_btn">編集</label>
                     </div>
-                    <div class="delete-box" id="delete_btn_${count}">
+                    <div class="delete-box" id="delete_btn_${count}" data-id="${count}">
                       <span>削除</span>
                     </div>
                   </div>
                 </div>`
-    console.log(html)
     return html;
   }
   if (window.location.href.match(/\/items\/\d+\/edit/)){
@@ -41,7 +40,6 @@ $(function(){
   $(document).on('change', '.hidden-field', function() {
     setLabel();
     var id = $(this).attr('id').replace(/[^0-9]/g, '');
-    console.log(id)
     $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
     var file = this.files[0];
     var reader = new FileReader();
@@ -59,7 +57,8 @@ $(function(){
       if (count == 5) { 
         $('.label-content').hide();
       }
-      if ($(`#item_images_attributes_${id}__destroy`)){
+      if ($(`#item_images_attributes_${id}__destroy`)[0]){
+        console.log("This is called")
         $(`#item_images_attributes_${id}__destroy`).prop('checked',false);
       } 
       setLabel();
@@ -73,13 +72,15 @@ $(function(){
   $(document).on('click', '.delete-box', function() {
     var count = $('.preview-box').length;
     setLabel(count);
+    console.log(this)
     var id = $(this).data('id')
+    console.log(id)
     $(`#preview-box__${id}`).remove();
-    var id = $(this).attr('id').replace(/[^0-9]/g, '');
-    $(`#preview-box__${id}`).remove();
+    // var id = $(this).attr('id').replace(/[^0-9]/g, '');
     if ($(`#item_images_attributes_${id}__destroy`).length == 0) {
       //フォームの中身を削除 
       $(`#item_images_attributes_${id}_image`).val("");
+      $(`#item_images_attributes_${id}__destroy`).prop('checked',true);
       var count = $('.preview-box').length;
       //5個めが消されたらラベルを表示
       if (count == 4) {
@@ -107,3 +108,5 @@ $(function(){
     }
   });
 });
+
+

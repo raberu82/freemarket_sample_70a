@@ -1,5 +1,5 @@
 .exhibit-wrapper
-  = form_with model:@item, url:posts_path , local: true do |f|
+  = form_with model:@item, url:"/posts/#{@item.id}"  , local: true do |f|
     .exhibit-header
       = link_to root_path, class: "exhibit-header__rogo" do
         = image_tag "logo.png",class:"exhibit-header__rogo"
@@ -29,7 +29,12 @@
           .hidden-content
             = f.fields_for :item_images do |i|
               = i.file_field :item_image, class: "hidden-field"
-              = i.check_box :_destroy, class: "hidden-checkbox"
+              = i.check_box :_destroy, class: "hidden-field", id: "item_images_attributes_#{i.index}__destroy"
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][0][item_image]", id: "item_images_attributes_0_image" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][item_image]", id: "item_images_attributes_1_image" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][item_image]", id: "item_images_attributes_2_image" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][item_image]", id: "item_images_attributes_3_image" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][item_image]", id: "item_images_attributes_4_image" }
             - @item.item_images.length.upto(4) do |i|
               %input{name: "item[item_images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
 
@@ -48,7 +53,7 @@
         .exhibit-detail__category
           %h3.exhibit-detail__category__text カテゴリ
           %span.exhibit-detail__category__tag 必須
-        = f.collection_select :category_id, Category.roots, :id, :name, { prompt: "---" }, {class:"exhibit-detail__category-box", id: "category_select" }
+        = f.collection_select :category_id, Category.roots, :id, :name,{prompt: "選択してください", selected: @selected_category.id}, {class: "exhibit-detail__category-box", id: "category_select", required: true}
         .product_select-children
         .exhibit-detail__brand
           %h3.exhibit-detail__brand__text ブランド
@@ -88,10 +93,9 @@
             %a.exhibit-price__ttl-box ¥
             = f.text_field :price, class: 'exhibit-detail__ttl-box', placeholder: "0", style: "height:45px;"
         .exhibit-price__border
-        = f.submit "出品する", class: "exhibit-submit-btn"
+        = f.submit "編集する", class: "exhibit-submit-btn"
         %input.exhibit-back-btn{value:"戻る", type:"button", onclick:"history.back()"}
         .exhibit-txt 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして加盟店規約に同意したことになります。
-
   = render "shared/footer"
 
 
