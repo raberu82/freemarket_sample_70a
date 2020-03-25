@@ -26,7 +26,6 @@ Rails.application.routes.draw do
       get 'category_children'
       get 'category_grandchildren'
     end
-    resources :comments, only: :create
   end
   
   resources :users, only: [:index, :show]
