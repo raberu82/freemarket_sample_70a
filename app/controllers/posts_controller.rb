@@ -33,23 +33,22 @@ class PostsController < ApplicationController
     if @item.present?
       render :edit
     else
-      redirect_to root_path, notice: '商品の情報がありません'
+      redirect_to root_path
     end
   end
 
   def update
     if @item.update(item_update_params)
-      redirect_to post_path, notice: '商品情報を更新しました'
-    else
-      render :edit, notice: '商品の更新に失敗しました'
+      redirect_to post_path
+      render :edit
     end
   end
 
   def destroy
     if @item.destroy
-      redirect_to root_path, notice: '商品情報を削除しました'
+      redirect_to root_path
     else
-      render :edit, notice: '削除に失敗しました'
+      render :edit
     end
   end
 
