@@ -72,9 +72,7 @@ $(function(){
   $(document).on('click', '.delete-box', function() {
     var count = $('.preview-box').length;
     setLabel(count);
-    console.log(this)
     var id = $(this).data('id')
-    console.log(id)
     $(`#preview-box__${id}`).remove();
     // var id = $(this).attr('id').replace(/[^0-9]/g, '');
     if ($(`#item_images_attributes_${id}__destroy`).length == 0) {
