@@ -57,8 +57,7 @@ $(function(){
       if (count == 5) { 
         $('.label-content').hide();
       }
-      if ($(`#item_images_attributes_${id}__destroy`)[0]){
-        console.log("This is called")
+      if ($(`#item_images_attributes_${id}__destroy`)){
         $(`#item_images_attributes_${id}__destroy`).prop('checked',false);
       } 
       setLabel();
