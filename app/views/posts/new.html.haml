@@ -49,7 +49,7 @@
           %h3.exhibit-detail__status__text 商品の状態
           %span.exhibit-detail__status__tag 必須
         .exhibit-detail__status-box
-          = f.collection_select :status, Status.all, :id, :name , {prompt: "---"},{class:"exhibit-detail__status-box" }
+          = f.collection_select :status_id, Status.all, :id, :name , {prompt: "---"},{class:"exhibit-detail__status-box" }
       
       .exhibit-delivery
         .exhibit-delivery__ttl 配送について
@@ -57,17 +57,17 @@
           %h3.exhibit-delivery__payment__text 配送料の負担
           %span.exhibit-delivery__payment__tag 必須
         .exhibit-delivery__payment-box
-          = f.collection_select :postage, Postage.all, :id, :name , {prompt: "---"},{class:"exhibit-delivery__payment-box" }
+          = f.collection_select :postage_id, Postage.all, :id, :name , {prompt: "---"},{class:"exhibit-delivery__payment-box" }
         .exhibit-delivery__prefecture
           %h3.exhibit-delivery__prefecture__text 配送元の地域
           %span.exhibit-delivery__prefecture__tag 必須
         .exhibit-delivery__prefecture-box
-          = f.collection_select :ship_form_address, Prefecture.all, :id, :name , {prompt: "---"},{class:"exhibit-delivery__prefecture-box" }
+          = f.collection_select :ship_form_address_id, ShipFormAddress.all, :id, :name, {prompt: "---"},{class:"exhibit-delivery__prefecture-box" }
         .exhibit-delivery__days
           %h3.exhibit-delivery__days__text 発送までの日数
           %span.exhibit-delivery__days__tag 必須
         .exhibit-delivery__days-box
-          = f.collection_select :shipping_days, Shipping.all, :id, :name ,  {prompt: "---"},{class:"exhibit-delivery__days-box" }
+          = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name ,  {prompt: "---"},{class:"exhibit-delivery__days-box" }
           
       .exhibit-price
         .exhibit-price__info 価格(¥300〜9,999,999)

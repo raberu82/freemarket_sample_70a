@@ -49,7 +49,6 @@
             .itembox--price__details
               %span (税込)
               %span 
-                = @item.postage
           - if current_user.presence
             - if @item.buyer_id.present? 
               .item__sold
@@ -74,14 +73,17 @@
                 %tr
                   %th.line--Categories カテゴリー
                   %td.line--CategoriesName
-                    = link_to "#",class: "line--CategoriesName__link" do
-                      = @item.category.parent.parent.name
-                      %br
-                      >
-                      = @item.category.parent.name
-                      %br
-                      >>
-                      = @item.category.name
+                    - if @item.category_id != 0
+                      = link_to "#",class: "line--CategoriesName__link" do
+                        = @item.category.parent.parent.name
+                        %br
+                        >
+                        = @item.category.parent.name
+                        %br
+                        >
+                        = @item.category.name
+                    - else 
+                      カテゴリ未登録
                 %tr
                   %th.line--Bland ブランド
                   %td.line--BlandName 
@@ -92,19 +94,19 @@
                 %tr
                   %th.line--ProductStatus 商品の状態
                   %td.line--ProductStatusnow 
-                    = @item.status
+                    = @item.status.name
                 %tr
                   %th.line--PostageBurden 配送料の負担
                   %td.line--Postage 
-                    = @item.name
+                    = @item.postage.name
                 %tr
                   %th.line--Shipping 発送元の地域
                   %td.line--Shippingarea
-                    =link_to @item.ship_form_address,"#",class: "line--Shippingarea__link"
+                    =link_to @item.ship_form_address.name,"#",class: "line--Shippingarea__link"
                 %tr
                   %th.line--Date 発送日の目安
                   %td.line--DatePeriod 
-                    = @item.shipping_days
+                    = @item.shipping_days.name
                     %span.product-fee_payer
           
           .itembox--option

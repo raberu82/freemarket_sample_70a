@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_084239) do
+ActiveRecord::Schema.define(version: 2020_03_24_084029) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 2020_03_23_084239) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "item_id"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "item_id", null: false
     t.string "item_image", null: false
@@ -56,10 +64,10 @@ ActiveRecord::Schema.define(version: 2020_03_23_084239) do
     t.integer "user_id", null: false
     t.integer "buyer_id"
     t.text "explanation", null: false
-    t.string "status", null: false
-    t.string "postage", null: false
-    t.integer "ship_form_address", null: false
-    t.string "shipping_days", null: false
+    t.integer "status_id", null: false
+    t.integer "postage_id", null: false
+    t.integer "ship_form_address_id", null: false
+    t.integer "shipping_days_id", null: false
     t.string "brand"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
