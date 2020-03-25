@@ -1,4 +1,4 @@
-class Prefecture < ActiveHash::Base
+class ShipFormAddress < ActiveHash::Base
   self.data = [
       {id: 1, name: '北海道'}, {id: 2, name: '青森県'}, {id: 3, name: '岩手県'},
       {id: 4, name: '宮城県'}, {id: 5, name: '秋田県'}, {id: 6, name: '山形県'},
@@ -16,24 +16,5 @@ class Prefecture < ActiveHash::Base
       {id: 40, name: '福岡県'}, {id: 41, name: '佐賀県'}, {id: 42, name: '長崎県'},
       {id: 43, name: '熊本県'}, {id: 44, name: '大分県'}, {id: 45, name: '宮崎県'},
       {id: 46, name: '鹿児島県'}, {id: 47, name: '沖縄県'}
-  ]
-end
-
-class Status < ActiveHash::Base
-  self.data = [
-      {id: 1, name: '新品、未使用'}, {id: 2, name: '未使用に近い'}, {id: 3, name: '目立った傷や汚れなし'},
-      {id: 4, name: 'やや傷や汚れあり'}, {id: 5, name: '傷や汚れあり'}, {id: 6, name: '全体的に状態が悪い'}
-  ]
-end
-
-class Postage < ActiveHash::Base
-  self.data = [
-      {id: 1, name: '送料込み（出品者負担）'}, {id: 2, name: '着払い（購入者負担）'}
-  ]
-end
-
-class Shipping < ActiveHash::Base
-  self.data = [
-      {id: 1, name: '１~２日で発送'}, {id: 2, name: '２~３日で発送'}, {id: 3, name: '４~７日で発送'}
   ]
 end

@@ -74,22 +74,17 @@
                 %tr
                   %th.line--Categories カテゴリー
                   %td.line--CategoriesName
-                    -# - if @item.category_id != 0
-                    -#   = link_to "#",class: "line--CategoriesName__link" do
-                    -#     = @item.category.parent.parent.name
-                    -#     %br
-                    -#     >
-                    -#     = @item.category.parent.name
-                    -#     %br
-                    -#     >
-                    -#     = @item.category.name
-                    -# - else 
-                    -#   カテゴリ未登録
-                    =link_to "ベビー・キッズ","#",class: "line--CategoriesName__link"
-                    %br/
-                    =link_to "ベビー服(男女兼用)  ~95cm","#",class: "line--CategoriesName__link"
-                    %br/
-                    =link_to "アウター","#",class: "line--CategoriesName__link"
+                    - if @item.category_id != 0
+                      = link_to "#",class: "line--CategoriesName__link" do
+                        = @item.category.parent.parent.name
+                        %br
+                        >
+                        = @item.category.parent.name
+                        %br
+                        >
+                        = @item.category.name
+                    - else 
+                      カテゴリ未登録
                 %tr
                   %th.line--Bland ブランド
                   %td.line--BlandName
@@ -99,19 +94,19 @@
                 %tr
                   %th.line--ProductStatus 商品の状態
                   %td.line--ProductStatusnow 
-                    = @item.status
+                    = @item.status.name
                 %tr
                   %th.line--PostageBurden 配送料の負担
                   %td.line--Postage 
-                    = @item.postage
+                    = @item.postage.name
                 %tr
                   %th.line--Shipping 発送元の地域
                   %td.line--Shippingarea
-                    =link_to @item.ship_form_address,"#",class: "line--Shippingarea__link"
+                    =link_to @item.ship_form_address.name,"#",class: "line--Shippingarea__link"
                 %tr
                   %th.line--Date 発送日の目安
                   %td.line--DatePeriod 
-                    = @item.shipping_days
+                    = @item.shipping_days.name
                     %span.product-fee_payer
           
           .itembox--option

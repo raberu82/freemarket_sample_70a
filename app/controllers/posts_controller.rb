@@ -8,7 +8,6 @@ class PostsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
-    @prefecture = Addresse.where('prefecture_id IN(?)', params[:prefecture_id])
     @category = Category.where(ancestry:nil).limit(13)
   end  
   
@@ -73,7 +72,7 @@ class PostsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :explanation, :status, :brand, :postage, :ship_form_address, :shipping_days, :category_id,:item_image, item_images_attributes: [:item_image,:id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price, :explanation, :status_id, :brand, :postage_id, :ship_form_address_id, :shipping_days_id, :category_id,:item_image, item_images_attributes: [:item_image,:id]).merge(user_id: current_user.id)
   end
 
   def set_item
