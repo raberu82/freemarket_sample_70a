@@ -18,8 +18,8 @@
                   .upper-box
                     = image_tag img.item_image.url, width: "112", height: "112", alt: "preview", data: { index: i }
                   .lower-box
-                    .update-box
-                      %label.edit-btn 編集
+                    -# .update-box
+                    -#   %label.edit-btn 編集
                     .delete-box{"data-id" => i}
                       .delete-btn
                         %span 削除
