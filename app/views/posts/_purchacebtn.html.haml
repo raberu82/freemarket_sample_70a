@@ -1,4 +1,5 @@
-=link_to new_post_path do
-  .purchaseBtn
-    %span.purchaseBtn__text 出品する
-    =image_tag "icon_camera.png",class: "purchaseBtn__icon"
+- if current_user.presence
+  =link_to new_post_path do
+    .purchaseBtn
+      %span.purchaseBtn__text 出品する
+      =image_tag "icon_camera.png",class: "purchaseBtn__icon"
