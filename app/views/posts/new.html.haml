@@ -62,7 +62,7 @@
           %h3.exhibit-delivery__prefecture__text 配送元の地域
           %span.exhibit-delivery__prefecture__tag 必須
         .exhibit-delivery__prefecture-box
-          = f.collection_select :ship_form_address_id, ShipFormAddress.all, :id, :name , {prompt: "---"},{class:"exhibit-delivery__prefecture-box" }
+          = f.collection_select :ship_form_address_id, ShipFormAddress.all, :id, :name, {prompt: "---"},{class:"exhibit-delivery__prefecture-box" }
         .exhibit-delivery__days
           %h3.exhibit-delivery__days__text 発送までの日数
           %span.exhibit-delivery__days__tag 必須
