@@ -17,4 +17,12 @@ class Item < ApplicationRecord
   validates :ship_form_address, presence: true, exclusion: { in: %w(---) }
   validates :shipping_days, presence: true, exclusion: { in: %w(---) }
   validates :category_id, presence: true, exclusion: { in: %w(---) }
+
+  def self.search(search)
+    if search
+      Item.where('name LIKE(?)', "%#{search}%")
+    else
+      Item.all
+    end
+  end
 end
