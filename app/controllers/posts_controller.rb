@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @items = Item.search(params[:keyword]).limit(3)
+    @items = Item.search(params[:key]).limit(3)
   end
 
   def ensure_correct_user
@@ -82,7 +82,6 @@ class PostsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
   
 end
 
