@@ -28,16 +28,17 @@
               %pre.label-box__text-visible クリックしてファイルをアップロード
           .hidden-content
             = f.fields_for :item_images do |i|
-              = i.file_field :item_image, class: "hidden-field"
-              = i.check_box :_destroy, class: "hidden-field", id: "item_images_attributes_#{i.index}__destroy"
-              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][0][item_image]", id: "item_images_attributes_0_image" }
-              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][item_image]", id: "item_images_attributes_1_image" }
-              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][item_image]", id: "item_images_attributes_2_image" }
-              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][item_image]", id: "item_images_attributes_3_image" }
-              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][item_image]", id: "item_images_attributes_4_image" }
-            - @item.item_images.length.upto(4) do |i|
-              %input{name: "item[item_images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
-
+              .inputs
+                = i.file_field :item_image, class: "hidden-field"
+                = i.hidden_field :id
+                = i.check_box :_destroy, class: "hidden-checkbox", id: "item_images_attributes_#{i.index}__destroy"
+              -# %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][0][item_image]", id: "item_images_attributes_0_image" }
+              -# %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][item_image]", id: "item_images_attributes_1_image" }
+              -# %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][item_image]", id: "item_images_attributes_2_image" }
+              -# %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][item_image]", id: "item_images_attributes_3_image" }
+              -# %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][item_image]", id: "item_images_attributes_4_image" }
+            .inputs
+              %input{name: "item[item_images_attributes][#{@item.item_images.length}][image]", id: "item_images_attributes_#{@item.item_images.length}_image", class:"hidden-field", type:"file"}
       .exhibit-item
         .exhibit-item__ttl 
           %h3.exhibit-item__ttl__text 商品名
@@ -53,7 +54,7 @@
         .exhibit-detail__category
           %h3.exhibit-detail__category__text カテゴリ
           %span.exhibit-detail__category__tag 必須
-        = f.collection_select :category_id, Category.roots, :id, :name,{prompt: "選択してください", selected: @selected_category.id}, {class: "exhibit-detail__category-box", id: "category_select", required: true}
+        = f.collection_select :category_id, Category.roots, :id, :name,{prompt: "選択してください", selected: @selected_category.id}, {class: "exhibit-detail__category-box", id: "category_select"}
         .product_select-children
         .exhibit-detail__brand
           %h3.exhibit-detail__brand__text ブランド

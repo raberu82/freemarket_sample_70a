@@ -40,6 +40,7 @@ class PostsController < ApplicationController
   def update
     if @item.update(item_update_params)
       redirect_to post_path
+    else
       render :edit
     end
   end

@@ -59,7 +59,7 @@ $(function(){
       } 
       setLabel();
       if(count < 5){
-        $('.label-box').attr({id: `label-box--${count}`,for: `item_images_attributes_${count}_image`});
+        $('.label-box').attr({id:  `item_images_attributes_${count}_image`});
       }
     }
   });
@@ -80,14 +80,16 @@ $(function(){
       if (count == 4) {
         $('.label-content').show();
       }
-      setLabel(count);
-      if(id < 5){
-        $('.label-box').data({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
-      }
+      // setLabel(count);
+      // if(id < 5){
+      //   $('.label-box').data({id:`item_images_attributes_${id}_image`});
+        
+      // }
     } 
     else {
       //投稿編集時
       $(`#item_images_attributes_${id}__destroy`).prop('checked',true);
+      console.log(id)
       //5個めが消されたらラベルを表示
       if (count == 4) {
         $('.label-content').show();
@@ -96,9 +98,10 @@ $(function(){
       setLabel();
       //ラベルのidとforの値を変更
       //削除したプレビューのidによって、ラベルのidを変更する
-      if(id < 5){
-        $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
-      }
+      // if(id < 5){
+      //   $('.label-box').attr({id: `item_images_attributes_${id}_image`});
+        
+      // }
     }
   });
 });
