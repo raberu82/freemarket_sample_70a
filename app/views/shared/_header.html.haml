@@ -10,8 +10,38 @@
           = f.submit "", class:"header__box__main__searchbox__form__submit"
     .header__box__nav
       %ul.header__box__nav__listleft
-        %li=link_to "カテゴリー" , "" , class:"header__box__nav__listleft__categories" 
-        %li=link_to "ブランド" , "#" , class:"header__box__nav__listleft__brand"
+        %li.header__box__nav__listleft__categories
+          カテゴリ
+          %ul.sub
+            %li=link_to "レディース" , "#", class: 'categori_li'
+            %li=link_to "メンズ" , "#", class: 'categori_li'
+            %li=link_to "ベビー・キッズ" , "#", class: 'categori_li'
+            %li=link_to "インテリア・住まい・小物" , "#", class: 'categori_li'
+            %li=link_to "本・音楽・ゲーム" , "#", class: 'categori_li'
+            %li=link_to "おもちゃ・ホビー・グッズ" , "#", class: 'categori_li'
+            %li=link_to "コスメ・香水・美容" , "#", class: 'categori_li'
+            %li=link_to "家電・スマホ・カメラ" , "#", class: 'categori_li'
+            %li=link_to "スポーツ・レジャー" , "#", class: 'categori_li'
+            %li=link_to "ハンドメイド" , "#", class: 'categori_li'
+            %li=link_to "チケット" , "#", class: 'categori_li'
+            %li=link_to "自動車・オートバイ" , "#", class: 'categori_li'
+            %li=link_to "その他" , "#", class: 'categori_li'
+        %li.header__box__nav__listleft__categories
+          ブランド
+          %ul.sub
+            %li=link_to "レディース" , "#", class: 'categori_li'
+            %li=link_to "メンズ" , "#", class: 'categori_li'
+            %li=link_to "ベビー・キッズ" , "#", class: 'categori_li'
+            %li=link_to "インテリア・住まい・小物" , "#", class: 'categori_li'
+            %li=link_to "本・音楽・ゲーム" , "#", class: 'categori_li'
+            %li=link_to "おもちゃ・ホビー・グッズ" , "#", class: 'categori_li'
+            %li=link_to "コスメ・香水・美容" , "#", class: 'categori_li'
+            %li=link_to "家電・スマホ・カメラ" , "#", class: 'categori_li'
+            %li=link_to "スポーツ・レジャー" , "#", class: 'categori_li'
+            %li=link_to "ハンドメイド" , "#", class: 'categori_li'
+            %li=link_to "チケット" , "#", class: 'categori_li'
+            %li=link_to "自動車・オートバイ" , "#", class: 'categori_li'
+            %li=link_to "その他" , "#", class: 'categori_li'
         .header__box__nav__listleft__lookfor
           %ul.header__box__nav__listleft__lookfor__tree
             %li.header__box__nav__listleft__lookfor__tree--item
