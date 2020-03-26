@@ -23,7 +23,7 @@ class PostsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      render :new
+      redirect_to new_post_path
     end
   end
 
@@ -40,7 +40,8 @@ class PostsController < ApplicationController
   def update
     if @item.update(item_update_params)
       redirect_to post_path
-      render :edit
+    else
+      redirect_to edit_post_path
     end
   end
 
@@ -77,12 +78,12 @@ class PostsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :explanation, :status, :brand, :postage, :ship_form_address, :shipping_days, 
+    params.require(:item).permit(:name, :price, :explanation, :status_id, :brand, :postage_id, :ship_form_address_id, :shipping_days_id, 
     :category_id,:item_image, item_images_attributes: [:item_image]).merge(user_id: current_user.id)
   end
 
   def item_update_params
-    params.require(:item).permit(:name, :price, :explanation, :status, :brand, :postage, :ship_form_address, :shipping_days, 
+    params.require(:item).permit(:name, :price, :explanation, :status_id, :brand, :postage_id, :ship_form_address_id, :shipping_days_id, 
     :category_id,:item_image, item_images_attributes: [:item_image,:id,:_destroy]).merge(user_id: current_user.id)
   end
 
