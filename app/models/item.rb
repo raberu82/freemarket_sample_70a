@@ -16,7 +16,7 @@ class Item < ApplicationRecord
   validates :postage, presence: true, exclusion: { in: %w(---) }
   validates :ship_form_address, presence: true, exclusion: { in: %w(---) }
   validates :shipping_days, presence: true, exclusion: { in: %w(---) }
-  validates :category_id, presence: true, exclusion: { in: %w(---) }
+  validates :category_id, presence: true, exclusion: { in: %w(---) }, numericality:{greater_than:1}
 
   def self.search(search)
     if search
