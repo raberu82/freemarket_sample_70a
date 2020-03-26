@@ -73,6 +73,7 @@
       align-items: center;
       &__listleft {
         display: flex;
+        width: 30%;
         &__categories {
           @include hoge ();
         }
@@ -94,6 +95,49 @@
     }
   }
 }
+
+
+// <dropdown>
+.sub {
+  width: 100%;
+  display: none;
+  position: absolute;
+  padding: 0;
+  background: #ffffff;
+}
+
+.categori_li{
+  max-width: calc(1200px/5);
+  position: relative;
+  display: block;
+  cursor: pointer;
+  color: red;
+  z-index: 1;
+}
+
+.header__box__nav__listleft>li{
+  width: 100%;
+  display: inline;
+}
+
+.sub li{
+  width: 200px;
+  background-color: #ffffff;
+}
+
+.sub li a{
+  padding: 5px 10px;
+  display: block;
+  color: #000000;
+  background-color: #ffffff;
+  text-decoration: none;
+}
+
+.categori_li:hover{
+  background: #b3d7ff;
+  color: rgb(65, 65, 65);
+}
+
 
 // <main>
 .main {
