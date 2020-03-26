@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
   def edit
     @selected_category = Category.find(@item.category_id)
-    @category = Category.where(ancestry:nil).limit(13)
+    Category.pluck(:id,:name)
     if @item.present?
       render :edit
     else

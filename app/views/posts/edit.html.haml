@@ -54,7 +54,7 @@
       .exhibit-detail
         .exhibit-detail__ttl 商品の詳細
         .exhibit-detail__category
-          %h3.exhibit-detail__category__text カテゴリ
+          %h3.exhibit-detail__category__text カテゴリ 
           %span.exhibit-detail__category__tag 必須
         = f.collection_select :category_id, Category.roots, :id, :name,{prompt: "選択してください", selected: @selected_category.id}, {class: "exhibit-detail__category-box", id: "category_select"}
         .product_select-children
