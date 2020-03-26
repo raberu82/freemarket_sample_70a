@@ -56,7 +56,7 @@
         .exhibit-detail__category
           %h3.exhibit-detail__category__text カテゴリ 
           %span.exhibit-detail__category__tag 必須
-        = f.collection_select :category_id, Category.roots, :id, :name,{prompt: "選択してください", selected: @selected_category.id}, {class: "exhibit-detail__category-box", id: "category_select"}
+        = f.collection_select :category_id, Category.roots, :id, :name,{prompt: "---", selected: @selected_category.id}, {class: "exhibit-detail__category-box", id: "category_select", required: true}
         .product_select-children
         .exhibit-detail__brand
           %h3.exhibit-detail__brand__text ブランド
@@ -87,7 +87,7 @@
           = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name ,  {prompt: "---"},{class:"exhibit-delivery__days-box" }
           
       .exhibit-price
-        .exhibit-price__info 価格(¥300〜9,999,999)
+        .exhibit-price__info 価格(¥300 ~ 9,999,999)
         .exhibit-price__ttl 
           .exhibit-price__ttl__unit
             .exhibit-price__ttl__unit__text 販売価格
