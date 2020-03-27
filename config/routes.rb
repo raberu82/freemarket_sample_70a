@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   
   resources :posts do
+    resources :comments, only: :create
     collection do
       get 'category_children'
       get 'category_grandchildren'

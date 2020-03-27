@@ -123,18 +123,19 @@
 
         .prodactdetails__main__contents__topcontent__commentbox
           %ul.commentContents
-          %form.new__comment{"accept-charset": "UTF-8", action: "#", method: "post"}
-            %input{name: "utf8", type: "hidden", value: "✓"}/
-            %input{name: "authenticity_token", type: "hidden", value: "✓"}/
-            %textarea.new__comment__body{name: "comment[body]", required: "required"}
-            %p.new__comment__Note
-              相手のことを考え丁寧なコメントを心がけましょう。
+          - if current_user
+            = form_with model:@item, @comment, url:post_comments_path, local: true do |f|
+              = f.text_area :comment, class:"new__comment__body"placeholder: "コメントする"
+              %p.new__comment__Note
+                相手のことを考え丁寧なコメントを心がけましょう。
+                %br/
+                不快な言葉遣いなどは利用制限や退会処分となることがあります。
               %br/
-              不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            %br/
-            %button.new__comment__Btn{name: "button", type: "submit"}
-              %i.fa.fa-comment
-              コメントする
+              = form.submit "SEND", class:"new__comment__Btn"
+                コメントする
+          - else
+            %strong
+              %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
 
       %ul.prodactdetails__main__contents__links
         %li
